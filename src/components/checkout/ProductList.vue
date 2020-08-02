@@ -4,7 +4,7 @@
   >
     <v-row>
       <v-col cols="12" sm="3">
-        <v-img :src="item.img" height="140"></v-img>
+        <v-img :src="thumbnailURL" height="140"></v-img>
       </v-col>
       <v-col cols="12" sm="6">
         <v-card-title class="custom_card_title">{{ item.name }}</v-card-title>
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+  import { getDownloadURL } from '@/utils/firebaseStorage.js'
+
   export default {
     name: "ProductList",
     props: {
@@ -36,8 +38,14 @@
     components: {
 
     },
+    created: function () {
+      getDownloadURL(this.item.thumbnailRef).then((result) => {
+        this.thumbnailURL = result
+      })
+    },
     data () {
       return {
+        thumbnailURL: null
       }
     },
   };

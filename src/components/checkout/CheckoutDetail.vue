@@ -25,7 +25,6 @@
       <v-btn block class="mr-2 mt-5 " color="accent" dark>
         Place order
       </v-btn>
-
   </v-card>
 </template>
 
