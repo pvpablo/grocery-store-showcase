@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar color="primary" dark>
+    <v-app-bar color="primary">
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>Grocery Store Showcase</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -45,7 +45,7 @@
 
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list nav dense>
-        <v-list-item-group active-class="primary--text">
+        <v-list-item-group active-class="secondary--text">
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>

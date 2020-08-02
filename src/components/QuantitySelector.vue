@@ -3,7 +3,7 @@
     <v-btn small @click="decreaseQuantity">
       <v-icon>mdi-minus</v-icon>
     </v-btn>
-    <span class="pl-1 pr-1 pt-1">{{ quantity }}</span>
+    <span class="pl-2 pr-2 pt-1">{{ quantity }}</span>
     <v-btn small @click="increaseQuantity">
       <v-icon>mdi-plus</v-icon>
     </v-btn>

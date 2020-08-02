@@ -1,14 +1,14 @@
 <template>
   <v-dialog v-model="dialog" width="350">
     <template v-slot:activator="{ on, attrs }">
-      <v-btn class="mr-3 mb-1" color="accent" dark v-bind="attrs" v-on="on">
+      <v-btn class="mr-3 mb-1" color="secondary" dark v-bind="attrs" v-on="on">
         Add
       </v-btn>
     </template>
 
     <v-card class="mx-auto pa-5">
       <v-card class="mx-auto" max-width="280">
-        <v-img :src="item.img" height="140"></v-img>
+        <v-img :src="thumbnailURL" height="140"></v-img>
       </v-card>
       <v-card-title class="custom_card_title">{{ item.name }}</v-card-title>
       <v-card-text class="mb-2">
@@ -30,7 +30,7 @@
       <v-card-actions class="mt-2 d-flex">
         <QuantitySelector></QuantitySelector>
         <v-spacer></v-spacer>
-        <v-btn class="mr-2" color="accent" dark>
+        <v-btn class="mr-2" color="secondary" dark>
         Add to Cart
       </v-btn>
       </v-card-actions>
@@ -48,6 +48,7 @@ export default {
   },
   props: {
     item: Object,
+    thumbnailURL: String
   },
   data() {
     return {

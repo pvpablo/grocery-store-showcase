@@ -15,7 +15,7 @@
     <v-divider></v-divider>
     <v-card-actions class="mt-2">
         <v-spacer></v-spacer>
-        <ProductDetail :item="item"></ProductDetail>
+        <ProductDetail :item="item" :thumbnailURL="thumbnailURL"></ProductDetail>
     </v-card-actions>
   </v-card>
 </template>

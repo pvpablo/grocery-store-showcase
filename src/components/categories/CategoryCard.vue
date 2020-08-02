@@ -7,7 +7,7 @@
     <v-img :src="thumbnailURL" height="194"></v-img>
     <v-card-title class="custom_card_title">{{ item.name }}</v-card-title>
     <v-card-actions>
-      <v-btn text color="accent" @click="$router.push('products')">Explore</v-btn>
+      <v-btn text color="secondary" @click="$router.push('products')">Explore</v-btn>
     </v-card-actions>
   </v-card>
 </template>
