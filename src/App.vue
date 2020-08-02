@@ -15,7 +15,7 @@
             offset-y="20"
           >
             <v-btn color="secondary" dark icon>
-              <v-icon dark right>mdi-cart</v-icon>
+              <v-icon dark>mdi-cart</v-icon>
             </v-btn>
           </v-badge>
           <v-btn color="secondary" dark rounded class="ml-5 primary--text">Login
