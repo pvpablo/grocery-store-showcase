@@ -1,42 +1,60 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+      <v-app-bar
+        color="primary"
+        dark
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
+        <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+        <v-toolbar-title>Grocery Store Showcase</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <div class="mr-3">
+          <v-badge
+            color="accent"
+            content="0"
+            overlap
+            offset-y="20"
+          >
+            <v-btn color="secondary" dark icon>
+              <v-icon dark right>mdi-cart</v-icon>
+            </v-btn>
+          </v-badge>
+          <v-btn color="secondary" dark rounded class="ml-5 primary--text">Login
+             <v-icon right color="primary">mdi-account</v-icon>
+          </v-btn>
+        </div>
+        
+      </v-app-bar>
 
+      <v-navigation-drawer
+        v-model="drawer"
+        absolute
+        temporary
+      >
+        <v-list
+          nav
+          dense
+        >
+          <v-list-item-group
+            v-model="group"
+            active-class="primary--text"
+          >
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-home</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Home</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-account</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Account</v-list-item-title>
+            </v-list-item>
+
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
     <v-main>
       <HelloWorld/>
     </v-main>
@@ -54,7 +72,11 @@ export default {
   },
 
   data: () => ({
-    //
+      drawer: false,
   }),
 };
 </script>
+
+<style lang="sass">
+
+</style>
