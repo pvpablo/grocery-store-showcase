@@ -15,8 +15,7 @@
       </v-btn>
     </v-toolbar>
     <v-row no-gutters>
-      <v-col cols="12" sm="3">
-        <v-col>
+      <v-col cols="12" sm="3" class="mt-3">
         <v-card class="mx-auto" max-width="374">
           <v-card-title>Cafe Badilico</v-card-title>
           <v-card-text>
@@ -27,16 +26,13 @@
           </v-card-text>
         </v-card>
       </v-col>
-      </v-col>
-      <v-col>
-        <v-col class="d-flex flex-wrap">
+        <v-col class="d-flex flex-wrap mt-3">
           <ProductCard
             v-for="category in categories"
             :key="category.id"
             :item="category"
           />
         </v-col>
-      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -44,7 +40,7 @@
 <script>
 import { firestore } from "@/main";
 import ProductCard from "@/components/products/ProductCard.vue";
-
+ 
 export default {
   name: "HelloWorld",
   components: {
@@ -56,8 +52,8 @@ export default {
   }),
   firestore() {
     return {
-      categories: firestore.collection("categories"),
-    };
+      categories: firestore.collection("categories")
+    }
   },
 };
 </script>

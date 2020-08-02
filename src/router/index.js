@@ -4,22 +4,22 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
   },
   {
-    path: '/product',
-    name: 'Product',
-    component: () => import('../views/Product.vue')
+    path: '/checkout',
+    name: 'Checkout',
+    component: () => import('../views/Checkout.vue')
   },
-    {
-      path: '/checkout',
-      name: 'Checkout',
-      component: () => import('../views/Checkout.vue')
-    },
+  {
+    path: '/products',
+    name: 'Products',
+    component: () => import('../views/Products.vue')
+  }
 ]
 
 const router = new VueRouter({
