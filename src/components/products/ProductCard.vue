@@ -1,14 +1,15 @@
 <template>
-  <v-card
+  <v-card 
+    v-if="thumbnailURL"
     max-width="180"
     class="mx-auto mb-10"
   >
-    <v-img :src="item.img" height="140"></v-img>
+    <v-img :src="thumbnailURL" height="140"></v-img>
     <v-card-title class="custom_card_title">{{ item.name }}</v-card-title>
     <v-card-text class="mb-2">
       <div class="text--primary">MXN $54.00</div>
       <div>
-        1 Piece
+        <!-- 1 Piece -->
       </div>
     </v-card-text>
     <v-divider></v-divider>
@@ -21,6 +22,8 @@
 
 <script>
 import ProductDetail from '@/components/products/ProductDetail.vue'
+import { getDownloadURL } from '@/utils/firebaseStorage.js'
+
 export default {
   name: "ProductCard",
   props: {
@@ -29,8 +32,14 @@ export default {
   components: {
       ProductDetail
   },
+  created: function () {
+       getDownloadURL(this.item.thumbnailRef).then((result) => {
+           this.thumbnailURL = result
+       })
+  },
   data () {
       return {
+          thumbnailURL: null
       }
     },
 };

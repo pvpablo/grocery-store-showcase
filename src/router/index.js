@@ -11,9 +11,9 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/product',
-    name: 'Product',
-    component: () => import('../views/Product.vue')
+    path: '/products',
+    name: 'Products',
+    component: () => import('../views/Products.vue')
   }
 ]
 

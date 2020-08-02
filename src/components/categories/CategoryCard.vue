@@ -1,21 +1,34 @@
 <template>
   <v-card
+    v-if="thumbnailURL"
     max-width="344"
     class="mx-auto mb-10"
   >
-    <v-img :src="item.img" height="194"></v-img>
+    <v-img :src="thumbnailURL" height="194"></v-img>
     <v-card-title class="custom_card_title">{{ item.name }}</v-card-title>
     <v-card-actions>
-      <v-btn text color="accent">Explore</v-btn>
+      <v-btn text color="accent" @click="$router.push('products')">Explore</v-btn>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
+import { getDownloadURL } from '@/utils/firebaseStorage.js'
+
 export default {
   name: "CategoryCard",
   props: {
     item: Object,
+  },
+  data () {
+    return {
+        thumbnailURL: null
+    }
+  },
+  created: function () {
+       getDownloadURL(this.item.thumbnailRef).then((result) => {
+           this.thumbnailURL = result
+       })
   },
 };
 </script>

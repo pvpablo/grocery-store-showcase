@@ -40,6 +40,7 @@
 
 <script>
 import QuantitySelector from '@/components/QuantitySelector.vue'
+
 export default {
   name: "ProductDetail",
   components: {
