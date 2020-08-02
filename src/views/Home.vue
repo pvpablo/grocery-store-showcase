@@ -9,13 +9,7 @@
     </v-row>
     <v-row>
       <v-col class="d-flex flex-wrap">
-        <v-card v-for="category in categories" :key="category.id" max-width="344" class="mx-auto mb-10">
-          <v-img :src="category.img" height="194"></v-img>
-          <v-card-title class="custom_card_title">{{ category.name }}</v-card-title>
-          <v-card-actions>
-            <v-btn text color="accent">Explore</v-btn>
-          </v-card-actions>
-        </v-card>
+        <CategoryCard v-for="category in categories" :key="category.id" :item="category"/>
       </v-col>
     </v-row>
   </v-container>
@@ -23,10 +17,13 @@
 
 <script>
   import { firestore } from '@/main'
+  import CategoryCard from '@/components/categories/CategoryCard.vue'
 
   export default {
     name: 'HelloWorld',
-
+    components: {
+      CategoryCard
+    },
     data: () => ({
       categories: []
     }),
