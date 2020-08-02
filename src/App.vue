@@ -17,8 +17,9 @@
           dark
           rounded
           class="ml-5 primary--text"
-          >Login
-          <v-icon right color="primary">mdi-account</v-icon>
+          >
+          <v-icon right color="primary" class="pr-3">mdi-account</v-icon>
+          Login
         </v-btn>
         <v-menu v-if="isAuthUser" offset-y>
           <template v-slot:activator="{ on, attrs }">
@@ -29,8 +30,8 @@
               v-on="on"
               class="ml-5 primary--text"
             >
-              {{ displayName }}
-              <v-icon right color="primary">mdi-account</v-icon>
+              <v-icon right color="primary" class="pr-3">mdi-account</v-icon>
+              {{ shortDisplayName }}
             </v-btn>
           </template>
           <v-list>
@@ -96,6 +97,11 @@ export default {
         })
         .catch((err) => new Error(err));
     },
+  },
+  computed: {
+    shortDisplayName () {
+      return this.displayName.substr(0, this.displayName.indexOf(' '))
+    }
   },
   data: () => ({
     drawer: false,
