@@ -14,7 +14,12 @@ Vue.use(VueRouter)
     path: '/product',
     name: 'Product',
     component: () => import('../views/Product.vue')
-  }
+  },
+    {
+      path: '/checkout',
+      name: 'Checkout',
+      component: () => import('../views/Checkout.vue')
+    },
 ]
 
 const router = new VueRouter({
