@@ -4,7 +4,7 @@
   >
     <v-row>
       <v-col cols="12" sm="3">
-        <v-img :src="thumbnailURL" height="140"></v-img>
+        <v-img :src="thumbnailURL" height="140" class="ml-4 rounded"></v-img>
       </v-col>
       <v-col cols="12" sm="6">
         <v-card-title class="custom_card_title">{{ item.name }}</v-card-title>
@@ -15,11 +15,12 @@
           </div>
         </v-card-text>
       </v-col>
-      <v-col cols="12" sm="3">
+      <v-divider vertical></v-divider>
+      <v-col cols="12" sm="2">
         <v-card-text>
           <div class="text--primary">MXN $54.00</div>
           <v-card-actions>
-            <v-btn text color="accent">Remove</v-btn>
+            <v-btn text color="secondary">Remove</v-btn>
           </v-card-actions>
         </v-card-text>
       </v-col>
