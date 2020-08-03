@@ -1,7 +1,7 @@
 <template>
   <v-card 
     v-if="thumbnailURL"
-    max-width="180"
+    max-width="260"
     class="mx-auto mb-10"
   >
     <v-img :src="thumbnailURL" height="140"></v-img>
@@ -9,7 +9,7 @@
     <v-card-text class="mb-2">
       <div class="text--primary">MXN $54.00</div>
       <div>
-        <!-- 1 Piece -->
+        1 Piece
       </div>
     </v-card-text>
     <v-divider></v-divider>
