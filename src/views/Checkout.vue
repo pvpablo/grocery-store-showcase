@@ -1,8 +1,24 @@
 <template>
   <v-container>
+    <v-row class="pr-3" height="200px">
+      <v-col cols="12" sm="8" class="mt-3">
+        <span class="ml-3 text-h6">Your Cart</span>
+      </v-col>
+    </v-row>
     <v-row no-gutters>
+
       <v-col cols="12" sm="8">
-          <ProductList
+        <StoreSelect v-bind:stores="stores"></StoreSelect>
+        <Payment></Payment>
+
+
+        <v-row class="pr-3" height="200px">
+          <v-col cols="12" sm="8" class="mt-3">
+            <span class="ml-3 text-h6">Products</span>
+          </v-col>
+        </v-row>
+
+        <ProductList
             v-for="category in categories"
             :key="category.id"
             :item="category"
@@ -20,13 +36,16 @@
 <script>
   import { firestore } from "@/main";
   import ProductList from "@/components/checkout/ProductList.vue";
-  import CheckoutDetail from "@/components/checkout/CheckoutDetail";
-
+  import CheckoutDetail from "@/components/checkout/CheckoutDetail.vue";
+  import StoreSelect from "@/components/checkout/StoreSelect.vue";
+  import Payment from "@/components/checkout/Payment.vue";
   export default {
     name: "HelloWorld",
     components: {
       CheckoutDetail,
-      ProductList
+      ProductList,
+      StoreSelect,
+      Payment
     },
     data: () => ({
       categories: [],
@@ -35,6 +54,7 @@
     firestore() {
       return {
         categories: firestore.collection("categories"),
+        stores: firestore.collection("stores").orderBy('name'),
       };
     },
   };

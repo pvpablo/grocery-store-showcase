@@ -13,16 +13,12 @@
         <v-list-item-content class="value">$100,000</v-list-item-content>
       </v-list-item>
       <v-list-item>
-        <v-list-item-content class="label">Delivery</v-list-item-content>
-        <v-list-item-content class="value">$100,000</v-list-item-content>
-      </v-list-item>
-      <v-list-item>
         <v-list-item-content class="label">Total</v-list-item-content>
         <v-list-item-content class="value">$100,000</v-list-item-content>
       </v-list-item>
     </v-list>
       <v-divider></v-divider>
-      <v-btn block class="mr-2 mt-5 " color="accent" dark>
+      <v-btn block class="mr-2 mt-5 " color="secondary" dark>
         Place order
       </v-btn>
   </v-card>

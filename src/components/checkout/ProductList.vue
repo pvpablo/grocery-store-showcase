@@ -30,14 +30,12 @@
 
 <script>
   import { getDownloadURL } from '@/utils/firebaseStorage.js'
-
   export default {
     name: "ProductList",
     props: {
       item: Object,
     },
     components: {
-
     },
     created: function () {
       getDownloadURL(this.item.thumbnailRef).then((result) => {
@@ -53,7 +51,6 @@
 </script>
 
 <style lang="sass">
-
   .v-card__subtitle, .v-card__text, .v-card__title
     padding: 8px 0px 0px 16px !important
 </style>
