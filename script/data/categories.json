@@ -1,26 +1,35 @@
 [
     {
         "name": "Food Cupboard",
-        "thumbnailRef": "/categories/category_buttery.jpg"
+        "thumbnailRef": "/categories/category_1.jpg"
     },
     {
         "name": "Drinks",
-        "thumbnailRef": "/categories/category_wine_and_drinks.jpg"
+        "thumbnailRef": "/categories/category_2.jpg"
     },
     {
         "name": "Household",
-        "thumbnailRef": "/categories/category_soap.jpg"
+        "thumbnailRef": "/categories/category_3.jpg"
     },
     {
         "name": "Dairy",
-        "thumbnailRef": "/categories/category_dairy.jpg"
+        "thumbnailRef": "/categories/category_4.jpg"
     },
     {
         "name": "Fresh Food",
-        "thumbnailRef": "/categories/category_vegetables.jpg"
+        "thumbnailRef": "/categories/category_5.jpg"
     },
     {
-        "name": "Pets",
-        "thumbnailRef": "/categories/category_pets.jpg"
+        "name": "Pets at Home",
+        "thumbnailRef": "/categories/category_6.jpg"
+    },
+    {
+        "name": "Fresh Meat & Poultry",
+        "thumbnailRef": "/categories/category_7.jpg"
+    },
+    {
+        "name": "Desserts",
+        "thumbnailRef": "/categories/category_8.jpg"
     }
+
 ]
