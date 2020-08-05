@@ -6,6 +6,7 @@
   >
     <v-img :src="thumbnailURL" height="140"></v-img>
     <v-card-title class="custom_card_title">{{ item.name }}</v-card-title>
+    <v-card-subtitle>{{ item.category }}</v-card-subtitle>
     <v-card-text class="mb-2">
       <div>{{ item.package }}</div>
       <div class="text--primary">{{ item.price | formatAsCurrency }}</div>
