@@ -1,0 +1,14 @@
+[
+    {
+        "address": "A1",
+        "name": "Store 1",
+        "phone": "XXX-XXX-XXXX",
+        "thumbnailRef": "/stores/a.jpeg"
+    },
+    {
+        "address": "A2",
+        "name": "Store 2",
+        "phone": "XXX-XXX-XXXX",
+        "thumbnailRef": "/stores/b.jpeg"
+    }
+]

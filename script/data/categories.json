@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Food Cupboard",
+        "thumbnailRef": "/categories/category_buttery.jpg"
+    },
+    {
+        "name": "Drinks",
+        "thumbnailRef": "/categories/category_wine_and_drinks.jpg"
+    },
+    {
+        "name": "Household",
+        "thumbnailRef": "/categories/category_soap.jpg"
+    },
+    {
+        "name": "Dairy",
+        "thumbnailRef": "/categories/category_dairy.jpg"
+    },
+    {
+        "name": "Fresh Food",
+        "thumbnailRef": "/categories/category_vegetables.jpg"
+    },
+    {
+        "name": "Pets",
+        "thumbnailRef": "/categories/category_pets.jpg"
+    }
+]

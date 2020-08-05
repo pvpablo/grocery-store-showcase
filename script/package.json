@@ -1,0 +1,14 @@
+{
+  "name": "firestore_upload",
+  "version": "1.0.0",
+  "description": "Upload Data to Firestore Cloud Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pvpablo",
+  "license": "ISC",
+  "dependencies": {
+    "firebase-admin": "^9.0.0"
+  }
+}
