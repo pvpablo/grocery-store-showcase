@@ -1,7 +1,7 @@
 <template>
   <v-card
     v-if="thumbnailURL"
-    max-width="344"
+    max-width="280"
     class="mx-auto mb-10"
   >
     <v-img :src="thumbnailURL" height="194"></v-img>
