@@ -6,7 +6,7 @@
       <v-spacer></v-spacer>
       <div class="mr-3">
         <v-badge color="accent" content="0" overlap offset-y="20">
-          <v-btn color="secondary" dark icon>
+          <v-btn color="secondary" dark icon @click="$router.push('/checkout')">
             <v-icon dark>mdi-cart</v-icon>
           </v-btn>
         </v-badge>
