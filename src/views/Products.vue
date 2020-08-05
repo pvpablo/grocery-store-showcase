@@ -14,7 +14,7 @@
           hide-details
           item-color="secondary"
           :items="priceRanges"
-          label="Featured"
+          label="Sort By"
         ></v-select>
       </v-col>
     </v-row>

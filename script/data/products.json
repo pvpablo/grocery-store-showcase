@@ -1,14 +1,44 @@
 [
   {
-    "name": "Product 1",
-    "price": 123,
-    "package": "1 Piece",
-    "desc": "A product description"
+    "name": "Big Bite Soft Wheat Loaf",
+    "category": "Food Cupboard",
+    "price": 1.99,
+    "package": "1 Loaf 800g",
+    "thumbnailRef": "/products/product_1.jpg"
   },
   {
-    "name": "Product 2",
-    "price": 456,
+    "name": "Italian Red Blush Wine",
+    "category": "Drinks",
+    "price": 15.00,
+    "package": "Wine Pack 3.50L",
+    "thumbnailRef": "/products/product_2.jpg"
+  },
+  {
+    "name": "Moisture Care Bar Soap",
+    "category": "Household",
+    "price": 2.50,
+    "package": "2 Pieces x90g",
+    "thumbnailRef": "/products/product_3.jpg"
+  },
+  {
+    "name": "Succulent Small Pot",
+    "category": "Household",
+    "price": 4.50,
     "package": "1 Piece",
-    "desc": "A product description"
+    "thumbnailRef": "/products/product_4.jpg"
+  },
+  {
+    "name": "Semi Skimmed Milk",
+    "category": "Dairy",
+    "price": 3.10,
+    "package": "4 Pints 2.272L",
+    "thumbnailRef": "/products/product_5.jpg"
+  },
+  {
+    "name": "Strawberries",
+    "category": "Fresh Food",
+    "price": 4.30,
+    "package": "1 Piece 600g",
+    "thumbnailRef": "/products/product_6.jpg"
   }
 ]

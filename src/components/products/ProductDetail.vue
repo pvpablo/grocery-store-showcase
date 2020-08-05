@@ -12,27 +12,22 @@
       </v-card>
       <v-card-title class="custom_card_title">{{ item.name }}</v-card-title>
       <v-card-text class="mb-2">
-        <p class="text--primary">Description...</p>
-      </v-card-text>
-      <v-card-text class="mb-2">
-        <div class="text--primary d-flex pr-3">
-            <span>Price:</span>
-            <v-spacer></v-spacer>
-            <span>MXN $54.00</span>
-        </div>
         <div class="text--primary d-flex pr-3">
             <span>Package:</span>
             <v-spacer></v-spacer>
-            <span>2 Piece</span>
+            <span>{{ item.package }}</span>
+        </div>
+        <div class="text--primary d-flex pr-3">
+            <span>Price:</span>
+            <v-spacer></v-spacer>
+            <span>{{ item.price | formatAsCurrency }}</span>
         </div>
       </v-card-text>
       <v-divider></v-divider>
       <v-card-actions class="mt-2 d-flex">
         <QuantitySelector></QuantitySelector>
         <v-spacer></v-spacer>
-        <v-btn class="mr-2" color="secondary" dark>
-        Add to Cart
-      </v-btn>
+        <v-btn class="mr-2" color="secondary" dark @click="addToCart">Add to Cart</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -45,6 +40,18 @@ export default {
   name: "ProductDetail",
   components: {
       QuantitySelector
+  },
+  filters: {
+    formatAsCurrency: function (value) {
+      if (!value) return ''
+      value = value.toFixed(2)
+      return `$${value}`
+    }
+  },
+  methods: {
+    addToCart () {
+      console.log('Added to Cart')
+    }
   },
   props: {
     item: Object,

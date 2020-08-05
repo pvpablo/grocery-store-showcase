@@ -7,10 +7,8 @@
     <v-img :src="thumbnailURL" height="140"></v-img>
     <v-card-title class="custom_card_title">{{ item.name }}</v-card-title>
     <v-card-text class="mb-2">
-      <div class="text--primary">MXN $54.00</div>
-      <div>
-        1 Piece
-      </div>
+      <div>{{ item.package }}</div>
+      <div class="text--primary">{{ item.price | formatAsCurrency }}</div>
     </v-card-text>
     <v-divider></v-divider>
     <v-card-actions class="mt-2">
@@ -28,6 +26,13 @@ export default {
   name: "ProductCard",
   props: {
     item: Object,
+  },
+  filters: {
+    formatAsCurrency: function (value) {
+      if (!value) return ''
+      value = value.toFixed(2)
+      return `$${value}`
+    }
   },
   components: {
       ProductDetail
