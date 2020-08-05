@@ -1,13 +1,13 @@
 <template>
   <v-card
     v-if="thumbnailURL"
-    max-width="280"
+    max-width="260"
     class="mx-auto mb-10"
   >
+    <v-card-title class="mb-2 mt-2">{{ item.name }}</v-card-title>
     <v-img :src="thumbnailURL" height="194"></v-img>
-    <v-card-title class="custom_card_title">{{ item.name }}</v-card-title>
-    <v-card-actions>
-      <v-btn text color="secondary" @click="$router.push('products')">Explore</v-btn>
+    <v-card-actions class="mt-2 mb-2">
+      <v-btn text color="secondary" @click="$router.push('products')">See More</v-btn>
     </v-card-actions>
   </v-card>
 </template>
