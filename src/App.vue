@@ -44,20 +44,36 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary>
+      <div class="sidebar-header pa-5">
+        <h1>Grocery Store</h1>
+      </div>
       <v-list nav dense>
         <v-list-item-group active-class="secondary--text">
-          <v-list-item>
+          <v-list-item @click="$router.push('/')">
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
-
-          <v-list-item>
+          <v-list-item @click="$router.push('/products')">
+            <v-list-item-icon>
+              <v-icon>mdi-basket</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Browse Products</v-list-item-title>
+          </v-list-item>
+          <v-divider color="#dedede" class="mb-5 mt-5"></v-divider>
+          <span class="subtitle--text custom-sub">HELP & SETTINGS</span>
+          <v-list-item class="mt-2">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
+            <v-list-item-title>Your Account</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-lifebuoy</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Help</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -113,4 +129,13 @@
   };
 </script>
 
-<style lang="sass"></style>
+<style lang="sass">
+.custom-sub
+  font-size: 1rem
+  font-weight: 800
+  line-height: 1rem
+
+.sidebar-header
+  background-color: #1565C0
+  color: white
+</style>
