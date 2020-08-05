@@ -9,8 +9,13 @@
 
       <v-col cols="12" sm="8">
         <StoreSelect v-bind:stores="stores"></StoreSelect>
-        <Payment></Payment>
 
+        <v-row class="pr-3" height="200px">
+          <v-col cols="12" sm="8" class="mt-3">
+            <span class="ml-3 text-h6">Payment</span>
+          </v-col>
+        </v-row>
+        <Payment></Payment>
 
         <v-row class="pr-3" height="200px">
           <v-col cols="12" sm="8" class="mt-3">
@@ -19,10 +24,10 @@
         </v-row>
 
         <ProductList
-            v-for="category in categories"
-            :key="category.id"
-            :item="category"
-          />
+          v-for="category in categories"
+          :key="category.id"
+          :item="category"
+        />
       </v-col>
 
       <v-col cols="12" sm="4">

@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="mx-auto mb-10 pa-2"
+    class="mx-auto mb-5 pa-2"
   >
     <v-card-actions
       class="pl-1"
@@ -32,7 +32,6 @@
         </v-btn>
       </v-col>
     </v-row>
-
 
     <v-row v-if="state.step === 'done' && state.selection">
       <v-col cols="12" sm="12">
