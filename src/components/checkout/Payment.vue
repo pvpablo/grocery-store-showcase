@@ -51,9 +51,6 @@
               <p>Expiration Date {{state.card.date}}</p>
             </v-col>
           </v-row>
-
-
-
         </v-col>
         <v-col cols="12" sm="12">
           <v-btn color="secondary" @click="changeStep('addcard')">

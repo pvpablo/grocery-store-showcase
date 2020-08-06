@@ -24,14 +24,14 @@
         </v-row>
 
         <ProductList
-          v-for="category in categories"
+          v-for="category in cart.products"
           :key="category.id"
           :item="category"
         />
       </v-col>
 
       <v-col cols="12" sm="4">
-        <CheckoutDetail></CheckoutDetail>
+        <CheckoutDetail :products="cart.products"></CheckoutDetail>
       </v-col>
 
     </v-row>
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+  import firebase from "firebase"
   import { firestore } from "@/main";
   import ProductList from "@/components/checkout/ProductList.vue";
   import CheckoutDetail from "@/components/checkout/CheckoutDetail.vue";
@@ -55,10 +56,11 @@
     data: () => ({
       categories: [],
       selection: 1,
+      uid: firebase.auth().currentUser.uid
     }),
     firestore() {
       return {
-        categories: firestore.collection("categories"),
+        cart: firestore.collection("cart").doc(this.uid),
         stores: firestore.collection("stores").orderBy('name'),
       };
     },

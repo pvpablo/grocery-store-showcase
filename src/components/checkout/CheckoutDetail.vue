@@ -6,15 +6,15 @@
     <v-list>
       <v-list-item>
         <v-list-item-content class="label">Subtotal</v-list-item-content>
-        <v-list-item-content class="value">$100,000</v-list-item-content>
+        <v-list-item-content class="value">${{ getSubtotal() }} </v-list-item-content>
       </v-list-item>
       <v-list-item>
         <v-list-item-content class="label">Estimated Tax</v-list-item-content>
-        <v-list-item-content class="value">$100,000</v-list-item-content>
+        <v-list-item-content class="value">${{ getTaxes() }}</v-list-item-content>
       </v-list-item>
       <v-list-item>
         <v-list-item-content class="label">Total</v-list-item-content>
-        <v-list-item-content class="value">$100,000</v-list-item-content>
+        <v-list-item-content class="value">${{ getTotal() }}</v-list-item-content>
       </v-list-item>
     </v-list>
       <v-divider></v-divider>
@@ -30,21 +30,37 @@
   export default {
     name: "CheckoutDetail",
     props: {
-      cart: Object,
+      products: Object,
     },
     components: {
 
     },
     data () {
       return {
+        subtotal: 0,
+        taxes : 0,
+        total: 0,
       }
     },
     methods:{
+      getSubtotal: function (){
+        this.subtotal = 0;
+        Object.keys(this.products).map(key => {
+          this.subtotal += this.products[key].price * this.products[key].quantity;
+        });
+        return this.subtotal.toFixed(2);
+      },
+      getTaxes(){
+        this.taxes = this.subtotal * 0.16;
+        return this.taxes.toFixed(2);
+      },
+      getTotal(){
+        return (this.subtotal + this.taxes).toFixed(2);
+      },
       placeOrder: function (){
         router.push("confirm")
       }
     }
-
   };
 </script>
 
