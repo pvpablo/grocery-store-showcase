@@ -55,6 +55,7 @@ export default {
     updateItem() {
       const updatedItem = Object.assign({quantity: this.quantity}, this.item)
       this.$emit('update:item', updatedItem)
+      this.dialog = false
     }
   },
   props: {

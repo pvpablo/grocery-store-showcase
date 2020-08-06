@@ -19,12 +19,12 @@
       <v-col cols="12" sm="2">
         <v-card-text>
           <div class="text--secondary">Price per unit</div>
-          <div class="text--primary">MXN ${{item.price.toFixed(2)}}</div>
+          <div class="text--primary">${{item.price.toFixed(2)}}</div>
 
           <div class="text--secondary">Subtotal</div>
-          <div class="text--primary">MXN ${{ (item.price* item.quantity).toFixed(2) }}</div>
-          <v-card-actions>
-            <v-btn  @click="deleteItem(item.id)" text color="secondary">Remove</v-btn>
+          <div class="text--primary">${{ (item.price* item.quantity).toFixed(2) }}</div>
+          <v-card-actions class="pa-0">
+            <v-btn  @click="deleteItem(item.id)" text color="secondary" class="pa-0">Remove</v-btn>
           </v-card-actions>
         </v-card-text>
       </v-col>

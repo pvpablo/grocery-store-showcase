@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="pr-3" height="200px">
       <v-col cols="12" sm="8" class="mt-3">
-        <span class="ml-3 text-h6">Your Cart</span>
+        <span class="ml-3 text-h6">Pick up</span>
       </v-col>
     </v-row>
     <v-row no-gutters>
@@ -19,7 +19,7 @@
 
         <v-row class="pr-3" height="200px">
           <v-col cols="12" sm="8" class="mt-3">
-            <span class="ml-3 text-h6">Products</span>
+            <span class="ml-3 text-h6">Shopping cart</span>
           </v-col>
         </v-row>
 
@@ -31,7 +31,7 @@
       </v-col>
 
       <v-col cols="12" sm="4">
-        <CheckoutDetail :subtotal="subtotal"></CheckoutDetail>
+        <CheckoutDetail :subtotal="parseFloat(subtotal)"></CheckoutDetail>
       </v-col>
 
     </v-row>

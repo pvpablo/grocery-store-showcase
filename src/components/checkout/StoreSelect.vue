@@ -35,7 +35,7 @@
 
     <v-row v-if="state.step === 'done' && state.selection">
       <v-col cols="12" sm="12">
-        You could pick up your order in
+        Available Stores
       </v-col>
       <v-col cols="12" sm="3">
         <v-img :src="state.selection.img" height="140"></v-img>
@@ -44,7 +44,9 @@
         <p>{{state.selection.name}}</p>
         <p>{{state.selection.address}}</p>
         <p>{{state.selection.phone}}</p>
-        <p><small>Choose a time to get your articles</small></p>
+      </v-col>
+      <v-col cols="12" sm="12">
+        <p>Pick up window</p>
         <v-select
             solo
             hide-details
@@ -60,8 +62,12 @@
     </v-row>
 
     <v-card-actions class="pl-1" v-if="state.step === 'done' && state.selection ">
-      <v-btn color="secondary" @click="changeStep('select')">
+      <v-spacer></v-spacer>
+      <v-btn color="primary secondary--text" @click="changeStep('select')">
         Change store
+      </v-btn>
+      <v-btn class="secondary">
+        Select Store
       </v-btn>
     </v-card-actions>
   </v-card>

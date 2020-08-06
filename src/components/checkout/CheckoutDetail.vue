@@ -9,8 +9,8 @@
         <v-list-item-content class="value">${{ subtotal }} </v-list-item-content>
       </v-list-item>
       <v-list-item>
-        <v-list-item-content class="label">Estimated Tax</v-list-item-content>
-        <v-list-item-content class="value">${{ getTaxes() }}</v-list-item-content>
+        <v-list-item-content class="label">Tax</v-list-item-content>
+        <v-list-item-content class="value">${{ getTax() }}</v-list-item-content>
       </v-list-item>
       <v-list-item>
         <v-list-item-content class="label">Total</v-list-item-content>
@@ -37,17 +37,19 @@
     },
     data () {
       return {
-        taxes : 0,
+        tax : 0,
         total: 0,
       }
     },
     methods:{
-      getTaxes(){
-        this.taxes = this.subtotal * 0.16;
-        return this.taxes.toFixed(2);
+      getTax(){
+        this.tax = this.subtotal * 0.16;
+        return this.tax.toFixed(2);
       },
       getTotal(){
-        return (this.subtotal + this.taxes).toFixed(2);
+        // return (this.subtotal + this.taxes).toFixed(2);
+        const total = this.subtotal + this.tax
+        return parseFloat(total).toFixed(2);
       },
       placeOrder: function (){
         router.push("confirm")

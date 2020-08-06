@@ -42,8 +42,7 @@ export default {
       const cartRef = firestore.collection('cart').doc(this.uid)
       const wrappedItem = { products: {}}
       wrappedItem['products'][item.id] = item
-      const res = await cartRef.set(wrappedItem, { merge: true })
-      console.log(res)
+      await cartRef.set(wrappedItem, { merge: true })
     }
   },
   firestore() {
