@@ -11,14 +11,18 @@
         <v-card-text class="mb-2">
           <div class="text--primary">Quantity</div>
           <div>
-            1 Piece
+            {{item.quantity}}
           </div>
         </v-card-text>
       </v-col>
       <v-divider vertical></v-divider>
       <v-col cols="12" sm="2">
         <v-card-text>
-          <div class="text--primary">MXN $54.00</div>
+          <div class="text--secondary">Price per unit</div>
+          <div class="text--primary">MXN ${{item.price.toFixed(2)}}</div>
+
+          <div class="text--secondary">Subtotal</div>
+          <div class="text--primary">MXN ${{ (item.price* item.quantity).toFixed(2) }}</div>
           <v-card-actions>
             <v-btn text color="secondary">Remove</v-btn>
           </v-card-actions>
