@@ -1,10 +1,10 @@
 <template>
   <div class="d-flex">
-    <v-btn small @click="decreaseQuantity">
+    <v-btn small @click="updateQuantity('decrease')">
       <v-icon>mdi-minus</v-icon>
     </v-btn>
     <span class="pl-2 pr-2 pt-1">{{ quantity }}</span>
-    <v-btn small @click="increaseQuantity">
+    <v-btn small @click="updateQuantity('increase')">
       <v-icon>mdi-plus</v-icon>
     </v-btn>
   </div>
@@ -19,14 +19,22 @@ export default {
     };
   },
   methods: {
-    increaseQuantity() {
-      this.quantity = this.quantity + 1
-    },
-    decreaseQuantity() {
-      if(this.quantity > 0){
+    updateQuantity (action) {
+      if (action == 'increase') {
+        this.quantity = this.quantity + 1
+      } else if (action == 'decrease' && this.quantity > 0) {
         this.quantity = this.quantity - 1
       }
+      this.$emit('update:quantity', this.quantity)
     }
+    // increaseQuantity() {
+    //   this.quantity = this.quantity + 1
+    // },
+    // decreaseQuantity() {
+    //   if(this.quantity > 0){
+    //     
+    //   }
+    // }
   }
 }
 

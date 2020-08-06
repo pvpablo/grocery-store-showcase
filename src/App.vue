@@ -5,8 +5,8 @@
       <v-toolbar-title>Grocery Store Showcase</v-toolbar-title>
       <v-spacer></v-spacer>
       <div class="mr-3">
-        <v-badge color="accent" content="0" overlap offset-y="20">
-          <v-btn color="secondary" dark icon>
+        <v-badge color="accent" :content="itemsInCart" overlap offset-y="20">
+          <v-btn color="secondary" dark icon @click="$router.push('/checkout')">
             <v-icon dark>mdi-cart</v-icon>
           </v-btn>
         </v-badge>
@@ -44,20 +44,36 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary>
+      <div class="sidebar-header pa-5">
+        <h1>Grocery Store</h1>
+      </div>
       <v-list nav dense>
         <v-list-item-group active-class="secondary--text">
-          <v-list-item>
+          <v-list-item @click="$router.push('/')">
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
-
-          <v-list-item>
+          <v-list-item @click="$router.push('/products')">
+            <v-list-item-icon>
+              <v-icon>mdi-basket</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Browse Products</v-list-item-title>
+          </v-list-item>
+          <v-divider color="#dedede" class="mb-5 mt-5"></v-divider>
+          <span class="subtitle--text custom-sub">HELP & SETTINGS</span>
+          <v-list-item class="mt-2">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
+            <v-list-item-title>Your Account</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-lifebuoy</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Help</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -69,48 +85,74 @@
 </template>
 
 <script>
-  import firebase from "firebase";
-  export default {
-    name: "App",
-    methods: {
-      login() {
-        const provider = new firebase.auth.GoogleAuthProvider()
-        provider.setCustomParameters({
-          prompt: "select_account",
-        });
-        firebase
-          .auth()
-          .signInWithPopup(provider)
-          .then((result) => {
-            this.isAuthUser = true;
-            this.displayName = result.user.displayName;
-          })
-          .catch((err) => new Error(err));
-      },
-      logout() {
-        firebase
-          .auth()
-          .signOut()
-          .then(() => {
-            this.isAuthUser = false;
-            this.displayName = "";
-          })
-          .catch((err) => new Error(err));
-      },
+import firebase from "firebase"
+import { firestore } from "@/main"
+export default {
+  name: "App",
+  methods: {
+    login() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      provider.setCustomParameters({
+        prompt: "select_account",
+      });
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+          this.isAuthUser = true;
+          this.displayName = result.user.displayName;
+        })
+        .catch((err) => new Error(err));
     },
-    computed: {
-      shortDisplayName () {
-        return this.displayName.substr(0, this.displayName.indexOf(' '))
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.isAuthUser = false;
+          this.displayName = "";
+        })
+        .catch((err) => new Error(err));
+    },
+  },
+  computed: {
+    shortDisplayName() {
+      return this.displayName.substr(0, this.displayName.indexOf(" "));
+    },
+  },
+  data: () => ({
+    drawer: false,
+    isAuthUser: firebase.auth().currentUser,
+    displayName: firebase.auth().currentUser
+      ? firebase.auth().currentUser.displayName
+      : "",
+    uid: firebase.auth().currentUser.uid,
+    cart: [],
+    itemsInCart: 0,
+  }),
+  firestore () {
+    return {
+      cart: {
+        ref: firestore.collection("cart").doc(this.uid),
+        resolve: (data) => {
+          this.itemsInCart = Object.keys(data.products).length
+        },
+        reject: (err) => {
+            return new Error(err)
+        }
       }
-    },
-    data: () => ({
-      drawer: false,
-      isAuthUser: firebase.auth().currentUser,
-      displayName: firebase.auth().currentUser
-        ? firebase.auth().currentUser.displayName
-        : "",
-    }),
-  };
+    }
+  },
+};
 </script>
 
-<style lang="sass"></style>
+<style lang="sass">
+.custom-sub
+  font-size: 1rem
+  font-weight: 800
+  line-height: 1rem
+
+.sidebar-header
+  background-color: #1565C0
+  color: white
+</style>

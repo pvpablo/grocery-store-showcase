@@ -5,12 +5,14 @@ Vue.use(Vuex)
 
 const state = {
     user: null,
-    claims: {}
+    claims: {},
+    cart: {}
 }
 
 const getters = {
     user: state => state.user,
-    claims: state => state.claims
+    claims: state => state.claims,
+    cart: state=> state.cart
 }
 
 const store = new Vuex.Store({
@@ -22,6 +24,9 @@ const store = new Vuex.Store({
         },
         updateClaims (state, claims) {
             Vue.set(state, 'claims', claims)
+        },
+        updateCart(state, cart) {
+            Vue.set(state, 'cart', cart)
         }
     }
 })

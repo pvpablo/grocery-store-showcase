@@ -25,9 +25,9 @@
       </v-card-text>
       <v-divider></v-divider>
       <v-card-actions class="mt-2 d-flex">
-        <QuantitySelector></QuantitySelector>
+        <QuantitySelector @update:quantity="updateQuantity($event)"></QuantitySelector>
         <v-spacer></v-spacer>
-        <v-btn class="mr-2" color="secondary" dark @click="addToCart">Add to Cart</v-btn>
+        <v-btn class="mr-2" color="secondary" dark @click="updateItem">Add to Cart</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -49,8 +49,13 @@ export default {
     }
   },
   methods: {
-    addToCart () {
-      console.log('Added to Cart')
+    updateQuantity (value) {
+      this.quantity = value
+    },
+    updateItem() {
+      const updatedItem = Object.assign({quantity: this.quantity}, this.item)
+      this.$emit('update:item', updatedItem)
+      // console.log(updatedItem)
     }
   },
   props: {
@@ -60,6 +65,7 @@ export default {
   data() {
     return {
       dialog: false,
+      quantity: 0
     };
   },
 };
