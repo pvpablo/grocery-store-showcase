@@ -37,17 +37,23 @@
 
       <v-row v-if="state.step === 'done'">
 
-        <v-col cols="12" sm="3">
-          <div class="icon">
-            <img v-if="cardType ==='amex'" src="@/assets/cards/amex.png"/>
-            <img v-if="cardType ==='mastercard'" src="@/assets/cards/mastercard.png"/>
-            <img v-if="cardType ==='visa'" src="@/assets/cards/visa.png"/>
-            <img v-if="cardType ==='discovery'" src="@/assets/cards/discover.png"/>
-          </div>
+        <v-col cols="12" sm="12">
+          <v-row>
+            <v-col class="icon" cols="12" sm="2">
+                <img v-if="cardType ==='amex'" src="@/assets/cards/amex.png"/>
+                <img v-if="cardType ==='mastercard'" src="@/assets/cards/mastercard.png"/>
+                <img v-if="cardType ==='visa'" src="@/assets/cards/visa.png"/>
+                <img v-if="cardType ==='discovery'" src="@/assets/cards/discover.png"/>
+            </v-col>
+            <v-col cols="12" sm="9">
+              <p>Card {{state.card.number.replace(/\d(?=\d{4})/g, "*")}}</p>
+              <p>Card Holder Name {{state.card.name}}</p>
+              <p>Expiration Date {{state.card.date}}</p>
+            </v-col>
+          </v-row>
 
-          Card {{state.card.number.replace(/\d(?=\d{4})/g, "*")}}
-          Card Holder Name {{state.card.name}}
-          Expiration Date {{state.card.date}}
+
+
         </v-col>
         <v-col cols="12" sm="12">
           <v-btn color="secondary" @click="changeStep('addcard')">
@@ -239,6 +245,7 @@
         margin-right: 10px
       .icon img
         opacity: 1
+        width: 90px
       .cards img.active
         opacity: 1
     </style>
