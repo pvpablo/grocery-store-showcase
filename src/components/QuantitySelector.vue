@@ -15,7 +15,7 @@ export default {
   name: "ProductDetail",
   data() {
     return {
-      quantity: 0,
+      quantity: 1,
     };
   },
   methods: {
