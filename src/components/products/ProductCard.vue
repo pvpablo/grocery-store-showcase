@@ -14,7 +14,10 @@
     <v-divider></v-divider>
     <v-card-actions class="mt-2">
         <v-spacer></v-spacer>
-        <ProductDetail :item="item" :thumbnailURL="thumbnailURL"></ProductDetail>
+        <ProductDetail
+          @update:item="$emit('update:cart', $event)"
+          :item="item" 
+          :thumbnailURL="thumbnailURL"></ProductDetail>
     </v-card-actions>
   </v-card>
 </template>

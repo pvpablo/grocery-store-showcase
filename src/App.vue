@@ -5,7 +5,7 @@
       <v-toolbar-title>Grocery Store Showcase</v-toolbar-title>
       <v-spacer></v-spacer>
       <div class="mr-3">
-        <v-badge color="accent" content="0" overlap offset-y="20">
+        <v-badge color="accent" :content="itemsInCart" overlap offset-y="20">
           <v-btn color="secondary" dark icon @click="$router.push('/checkout')">
             <v-icon dark>mdi-cart</v-icon>
           </v-btn>
@@ -85,48 +85,65 @@
 </template>
 
 <script>
-  import firebase from "firebase";
-  export default {
-    name: "App",
-    methods: {
-      login() {
-        const provider = new firebase.auth.GoogleAuthProvider()
-        provider.setCustomParameters({
-          prompt: "select_account",
-        });
-        firebase
-          .auth()
-          .signInWithPopup(provider)
-          .then((result) => {
-            this.isAuthUser = true;
-            this.displayName = result.user.displayName;
-          })
-          .catch((err) => new Error(err));
-      },
-      logout() {
-        firebase
-          .auth()
-          .signOut()
-          .then(() => {
-            this.isAuthUser = false;
-            this.displayName = "";
-          })
-          .catch((err) => new Error(err));
-      },
+import firebase from "firebase"
+import { firestore } from "@/main"
+export default {
+  name: "App",
+  methods: {
+    login() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      provider.setCustomParameters({
+        prompt: "select_account",
+      });
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+          this.isAuthUser = true;
+          this.displayName = result.user.displayName;
+        })
+        .catch((err) => new Error(err));
     },
-    computed: {
-      shortDisplayName () {
-        return this.displayName.substr(0, this.displayName.indexOf(' '))
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.isAuthUser = false;
+          this.displayName = "";
+        })
+        .catch((err) => new Error(err));
+    },
+  },
+  computed: {
+    shortDisplayName() {
+      return this.displayName.substr(0, this.displayName.indexOf(" "));
+    },
+  },
+  data: () => ({
+    drawer: false,
+    isAuthUser: firebase.auth().currentUser,
+    displayName: firebase.auth().currentUser
+      ? firebase.auth().currentUser.displayName
+      : "",
+    uid: firebase.auth().currentUser.uid,
+    cart: [],
+    itemsInCart: 0,
+  }),
+  firestore () {
+    return {
+      cart: {
+        ref: firestore.collection("cart").doc(this.uid),
+        resolve: (data) => {
+          this.itemsInCart = Object.keys(data.products).length
+        },
+        reject: (err) => {
+            return new Error(err)
+        }
       }
-    },
-    data: () => ({
-      drawer: false,
-      isAuthUser: firebase.auth().currentUser,
-      displayName: firebase.auth().currentUser
-        ? firebase.auth().currentUser.displayName
-        : "",
-    }),
-  };
+    }
+  },
+};
 </script>
 
 <style lang="sass">

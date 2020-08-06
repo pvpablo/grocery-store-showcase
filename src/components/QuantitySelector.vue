@@ -25,7 +25,7 @@ export default {
       } else if (action == 'decrease' && this.quantity > 0) {
         this.quantity = this.quantity - 1
       }
-      this.$emit('update:item', this.quantity)
+      this.$emit('update:quantity', this.quantity)
     }
     // increaseQuantity() {
     //   this.quantity = this.quantity + 1

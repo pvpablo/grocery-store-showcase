@@ -9,22 +9,22 @@
         class="pb-0"
       ></v-text-field>
     </v-col>
-    <!-- <v-row> -->
     <v-col class="d-flex flex-wrap">
       <ProductCard
+        @update:cart="updateCart($event)"
         class=""
         v-for="category in categories"
         :key="category.id"
         :item="category"
       />
     </v-col>
-    <!-- </v-row> -->
   </div>
 </template>
 
 <script>
-import { firestore } from "@/main";
-import ProductCard from "@/components/products/ProductCard.vue";
+import firebase from "firebase"
+import { firestore } from "@/main"
+import ProductCard from "@/components/products/ProductCard.vue"
 
 export default {
   name: "ProductGrid",
@@ -34,10 +34,22 @@ export default {
   data: () => ({
     categories: [],
     selection: 1,
+    cart: [],
+    uid: firebase.auth().currentUser.uid,
   }),
+  methods: {
+    async updateCart (item) {
+      const cartRef = firestore.collection('cart').doc(this.uid)
+      const wrappedItem = { products: {}}
+      wrappedItem['products'][item.id] = item
+      const res = await cartRef.set(wrappedItem, { merge: true })
+      console.log(res)
+    }
+  },
   firestore() {
     return {
       categories: firestore.collection("products"),
+      cart: firestore.collection("cart").doc(this.uid)
     };
   },
 };
