@@ -6,7 +6,6 @@
       </v-col>
     </v-row>
     <v-row no-gutters>
-
       <v-col cols="12" sm="8">
         <StoreSelect v-bind:stores="stores"></StoreSelect>
 
@@ -15,6 +14,7 @@
             <span class="ml-3 text-h6">Payment</span>
           </v-col>
         </v-row>
+
         <Payment></Payment>
 
         <v-row class="pr-3" height="200px">

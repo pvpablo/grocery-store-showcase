@@ -18,13 +18,15 @@
       </v-list-item>
     </v-list>
       <v-divider></v-divider>
-      <v-btn block class="mr-2 mt-5 " color="secondary" dark>
+      <v-btn block class="mr-2 mt-5" @click="placeOrder" color="secondary" dark>
         Place order
       </v-btn>
   </v-card>
 </template>
 
 <script>
+  import router from "@/router";
+
   export default {
     name: "CheckoutDetail",
     props: {
@@ -37,6 +39,12 @@
       return {
       }
     },
+    methods:{
+      placeOrder: function (){
+        router.push("confirm")
+      }
+    }
+
   };
 </script>
 
