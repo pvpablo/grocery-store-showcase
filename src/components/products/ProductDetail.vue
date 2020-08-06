@@ -55,7 +55,6 @@ export default {
     updateItem() {
       const updatedItem = Object.assign({quantity: this.quantity}, this.item)
       this.$emit('update:item', updatedItem)
-      // console.log(updatedItem)
     }
   },
   props: {

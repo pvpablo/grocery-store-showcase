@@ -24,7 +24,7 @@
           <div class="text--secondary">Subtotal</div>
           <div class="text--primary">MXN ${{ (item.price* item.quantity).toFixed(2) }}</div>
           <v-card-actions>
-            <v-btn text color="secondary">Remove</v-btn>
+            <v-btn  @click="deleteItem(item.id)" text color="secondary">Remove</v-btn>
           </v-card-actions>
         </v-card-text>
       </v-col>
@@ -33,7 +33,9 @@
 </template>
 
 <script>
+  import { firestore } from '@/main'
   import { getDownloadURL } from '@/utils/firebaseStorage.js'
+  import firebase from "firebase";
   export default {
     name: "ProductList",
     props: {
@@ -46,8 +48,19 @@
         this.thumbnailURL = result
       })
     },
+    methods:{
+      deleteItem: async function(productId){
+        const cartRef = firestore.collection('cart').doc(this.uid)
+        const cart = await cartRef.get();
+        let currentProducts = cart.data().products;
+        delete currentProducts[productId];
+        const wrappedItem = { products: currentProducts}
+        await cartRef.set(wrappedItem)
+      }
+    },
     data () {
       return {
+        uid: firebase.auth().currentUser.uid,
         thumbnailURL: null
       }
     },
