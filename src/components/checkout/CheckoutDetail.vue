@@ -6,7 +6,7 @@
     <v-list>
       <v-list-item>
         <v-list-item-content class="label">Subtotal</v-list-item-content>
-        <v-list-item-content class="value">${{ subtotal }} </v-list-item-content>
+        <v-list-item-content class="value">${{ subtotal }}</v-list-item-content>
       </v-list-item>
       <v-list-item>
         <v-list-item-content class="label">Estimated Tax</v-list-item-content>

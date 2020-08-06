@@ -75,7 +75,7 @@
             Object.keys(this.products).map(key => {
               this.subtotal += this.products[key].price * this.products[key].quantity;
             });
-            this.subtotal = this.subtotal.toFixed(2);
+            this.subtotal = +this.subtotal.toFixed(2);
           })
     },
     firestore() {
