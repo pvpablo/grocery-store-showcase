@@ -6,7 +6,7 @@
     <v-list>
       <v-list-item>
         <v-list-item-content class="label">Subtotal</v-list-item-content>
-        <v-list-item-content class="value">${{ getSubtotal() }} </v-list-item-content>
+        <v-list-item-content class="value">${{ subtotal }} </v-list-item-content>
       </v-list-item>
       <v-list-item>
         <v-list-item-content class="label">Estimated Tax</v-list-item-content>
@@ -30,26 +30,18 @@
   export default {
     name: "CheckoutDetail",
     props: {
-      products: Object,
+      subtotal: Number,
     },
     components: {
 
     },
     data () {
       return {
-        subtotal: 0,
         taxes : 0,
         total: 0,
       }
     },
     methods:{
-      getSubtotal: function (){
-        this.subtotal = 0;
-        Object.keys(this.products).map(key => {
-          this.subtotal += this.products[key].price * this.products[key].quantity;
-        });
-        return this.subtotal.toFixed(2);
-      },
       getTaxes(){
         this.taxes = this.subtotal * 0.16;
         return this.taxes.toFixed(2);

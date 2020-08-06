@@ -44,6 +44,18 @@
         <p>{{state.selection.name}}</p>
         <p>{{state.selection.address}}</p>
         <p>{{state.selection.phone}}</p>
+        <p><small>Choose a time to get your articles</small></p>
+        <v-select
+            solo
+            hide-details
+            item-text="label"
+            item-color="secondary"
+            return-object
+            name="time"
+            v-validate="'required'"
+            :items="this.times"
+            label="Select an available time for this store"
+        ></v-select>
       </v-col>
     </v-row>
 
@@ -64,6 +76,7 @@
     },
     data () {
       return {
+        times: [],
         state: {
           address: [],
           selection: undefined,
@@ -76,13 +89,16 @@
         this.state.step = value;
       },
       selectStore: async function (store) {
-
         this.state.selection = {
           name: store.name ,
           address: store.address,
           phone: store.phone,
           img:  await getDownloadURL(store.thumbnailRef)
         };
+        this.times = [];
+        for(let i = store.open; i < store.close; i++){
+          this.times.push({value: i , label: `From ${i}:00 to ${i+1}:00`});
+        }
         this.changeStep('done');
       },
       cancel : function () {

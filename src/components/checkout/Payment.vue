@@ -54,7 +54,7 @@
         </v-col>
         <v-col cols="12" sm="12">
           <v-btn color="secondary" @click="changeStep('addcard')">
-            Change method payment
+            Change Payment Method
           </v-btn>
         </v-col>
 
@@ -78,8 +78,9 @@
                             v-model="state.card.number"
                             label="Type your credit card number"
                             type="number"
-                            :error="state.error.number"
                             outlined
+                            color="subtitle"
+                            :error="state.error.number"
               ></v-text-field>
 
                 <v-row>
@@ -90,6 +91,7 @@
                       type="number"
                       outlined
                       required
+                      color="subtitle"
                       :error="state.error.cvv"
                     ></v-text-field>
                   </v-col>
@@ -99,6 +101,7 @@
                       v-model="state.card.date"
                       label="Expiry Date (MM/YY)"
                       outlined
+                      color="subtitle"
                       :error="state.error.date"
                     ></v-text-field>
                   </v-col>
@@ -110,6 +113,7 @@
                   type="string"
                   outlined
                   required
+                  color="subtitle"
                   :error="state.error.name"
                 ></v-text-field>
 
@@ -118,6 +122,7 @@
                   label="E-mail"
                   outlined
                   required
+                  color="subtitle"
                   :error="state.error.email"
                 ></v-text-field>
 
@@ -126,6 +131,7 @@
                   label="Mobile Number"
                   type="number"
                   outlined
+                  color="subtitle"
                   :error="state.error.mobile"
                 ></v-text-field>
 
@@ -135,6 +141,7 @@
                   label="Zip Code"
                   outlined
                   required
+                  color="subtitle"
                   :error="state.error.zipcode"
                 ></v-text-field>
 
@@ -205,6 +212,7 @@
           },
           saveCard: function (){
             let error = false;
+            delete this.state.card.cardType;
             Object.keys(this.state.card).map( key => {
               this.state.error[key] = false;
               if( !this.state.card[key]){
@@ -212,6 +220,7 @@
                 error = true;
               }
             });
+
             if(error){
               return;
             }

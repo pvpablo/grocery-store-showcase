@@ -31,7 +31,7 @@
       </v-col>
 
       <v-col cols="12" sm="4">
-        <CheckoutDetail :products="cart.products"></CheckoutDetail>
+        <CheckoutDetail :subtotal="subtotal"></CheckoutDetail>
       </v-col>
 
     </v-row>
@@ -45,6 +45,7 @@
   import CheckoutDetail from "@/components/checkout/CheckoutDetail.vue";
   import StoreSelect from "@/components/checkout/StoreSelect.vue";
   import Payment from "@/components/checkout/Payment.vue";
+  import router from "@/router";
   export default {
     name: "HelloWorld",
     components: {
@@ -56,8 +57,27 @@
     data: () => ({
       categories: [],
       selection: 1,
+      products: {},
+      subtotal: 0,
       uid: firebase.auth().currentUser.uid
     }),
+    created : function() {
+      firestore
+          .collection("cart")
+          .doc(this.uid)
+          .onSnapshot( (querySnapshot) => {
+            this.subtotal = 0;
+            this.products = querySnapshot.data().products;
+            //IF THE CART IS EMPTY, GO TO STORE
+            if(!Object.keys(this.products).length){
+              router.push("/");
+            }
+            Object.keys(this.products).map(key => {
+              this.subtotal += this.products[key].price * this.products[key].quantity;
+            });
+            this.subtotal = this.subtotal.toFixed(2);
+          })
+    },
     firestore() {
       return {
         cart: firestore.collection("cart").doc(this.uid),

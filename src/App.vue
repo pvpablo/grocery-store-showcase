@@ -118,7 +118,15 @@ export default {
   computed: {
     shortDisplayName() {
       return this.displayName.substr(0, this.displayName.indexOf(" "));
-    },
+    }
+  },
+  created : function() {
+    firestore
+        .collection("cart")
+        .doc(this.uid)
+        .onSnapshot( (querySnapshot) => {
+          this.itemsInCart = Object.keys(querySnapshot.data().products).length || "0";
+        })
   },
   data: () => ({
     drawer: false,
@@ -130,19 +138,6 @@ export default {
     cart: [],
     itemsInCart: 0,
   }),
-  firestore () {
-    return {
-      cart: {
-        ref: firestore.collection("cart").doc(this.uid),
-        resolve: (data) => {
-          this.itemsInCart = Object.keys(data.products).length
-        },
-        reject: (err) => {
-            return new Error(err)
-        }
-      }
-    }
-  },
 };
 </script>
 
