@@ -1,20 +1,18 @@
 <template>
   <v-container class="mt-9 mb-16">
     <v-row>
-      <v-col cols="12" sm="8">
+      <v-col>
         <v-card>
           <v-container class="text-center text--lighten-5 mytext mb-16">
-            <h2 class="ma-10 text-h3" >Thanks for your shop!</h2>
-            <p>You are awesome <span>{{name}}</span> </p>
-            <p>We're working to get your order done.<br/> You can pick up at the store on</p>
-            <p><span>{{order[0].date}}</span> <span>{{order[0].time}}</span></p>
-            <p>You'll need the next order number:</p>
-            <p><span>{{order[0].id}}</span></p>
-            <p>Don't forget bring your ID.</p>
+            <h2 class="ma-10 text-h3 success--text">Your oder has been successfully received!</h2>
+            <p>One of our associates will be in touch soon. Your order ID is {{ order[0].id }}</p>
+            <p>You can pick up at the store on <span>{{ order[0].date }}</span> at <span>{{ order[0].time }}</span></p>
+            <p>Please bring a valid ID or membership card to pickup your items.</p>
           </v-container>
         </v-card>
       </v-col>
-
+    </v-row>
+    <v-row class="justify-center">
       <v-col cols="12" sm="4">
         <v-card>
           <v-container>
@@ -27,14 +25,13 @@
         </v-card>
       </v-col>
     </v-row>
-
   </v-container>
 </template>
 
 <script>
-import firebase from 'firebase';
 import router from "@/router";
-import {firestore} from "@/main";
+import firebase from "firebase"
+import { firestore } from "@/main";
 
 export default {
   name: 'Confirm',
