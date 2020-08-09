@@ -15,7 +15,7 @@ export default {
   name: "ProductDetail",
   data() {
     return {
-      quantity: 1,
+      quantity: 0,
     };
   },
   methods: {
@@ -27,16 +27,6 @@ export default {
       }
       this.$emit('update:quantity', this.quantity)
     }
-    // increaseQuantity() {
-    //   this.quantity = this.quantity + 1
-    // },
-    // decreaseQuantity() {
-    //   if(this.quantity > 0){
-    //     
-    //   }
-    // }
   }
 }
-
-
 </script>

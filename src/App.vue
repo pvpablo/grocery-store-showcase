@@ -125,7 +125,12 @@ export default {
         .collection("cart")
         .doc(this.uid)
         .onSnapshot( (querySnapshot) => {
-          this.itemsInCart = Object.keys(querySnapshot.data().products).length || "0";
+          if(querySnapshot.data()) {
+            this.itemsInCart = Object.keys(querySnapshot.data().products).length || "0";
+          }else{
+            this.itemsInCart = "0";
+          }
+
         })
   },
   data: () => ({

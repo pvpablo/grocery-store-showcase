@@ -5,8 +5,8 @@
         <v-card>
           <v-container class="text-center text--lighten-5 mytext mb-16">
             <h2 class="ma-10 text-h3 success--text">Your oder has been successfully received!</h2>
-            <p>One of our associates will be in touch soon. Your order ID is {{ orderNumber }}</p>
-            <p>You can pick up at the store on <span>{{pickupDate}}</span> at <span>{{pickupHour}}:00</span></p>
+            <p>One of our associates will be in touch soon. Your order ID is {{ order[0].id }}</p>
+            <p>You can pick up at the store on <span>{{ order[0].date }}</span> at <span>{{ order[0].time }}</span></p>
             <p>Please bring a valid ID or membership card to pickup your items.</p>
           </v-container>
         </v-card>
@@ -25,16 +25,13 @@
         </v-card>
       </v-col>
     </v-row>
-
-
-
-
-
   </v-container>
 </template>
 
 <script>
 import router from "@/router";
+import firebase from "firebase"
+import { firestore } from "@/main";
 
 export default {
   name: 'Confirm',
@@ -47,30 +44,20 @@ export default {
     }
   },
   data: () => {
-    function generateDate(){
-      function getRandomDate(from, to) {
-        from = from.getTime();
-        to = to.getTime();
-        return new Date(from + Math.random() * (to - from));
-      }
-      const today = new Date() ;
-      const next5Days = new Date();
-      next5Days.setDate(next5Days.getDate() + 5 );
-      const randomDate = getRandomDate(today,next5Days);
-      const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'long', day: '2-digit' })
-      const [{ value: month },,{ value: day },,] = dateTimeFormat.formatToParts(randomDate)
-      return `${month}, ${day}`;
-    }
-
     return {
-      orderNumber: Math.floor(Math.random() * 999999) + 10000,
-      pickupDate: generateDate(),
-      pickupHour:  Math.floor(Math.random() * (18 - 10 + 1) + 10),
+      name: firebase.auth().currentUser.displayName,
+      uid: firebase.auth().currentUser.uid
     }
   },
-  firestore () {
+  firestore() {
     return {
-    }
+      order: firestore
+                .collection("order")
+                .where("uid", "==",this.uid)
+                .orderBy("created", "desc")
+                .limit(1)
+      ,
+    };
   },
 }
 </script>

@@ -7,7 +7,7 @@
     </v-row>
     <v-row no-gutters>
       <v-col cols="12" sm="8">
-        <StoreSelect v-bind:stores="stores"></StoreSelect>
+        <StoreSelect  :order="order" v-bind:stores="stores"></StoreSelect>
 
         <v-row class="pr-3" height="200px">
           <v-col cols="12" sm="8" class="mt-3">
@@ -15,7 +15,7 @@
           </v-col>
         </v-row>
 
-        <Payment></Payment>
+        <Payment :order="order"></Payment>
 
         <v-row class="pr-3" height="200px">
           <v-col cols="12" sm="8" class="mt-3">
@@ -31,7 +31,7 @@
       </v-col>
 
       <v-col cols="12" sm="4">
-        <CheckoutDetail :subtotal="parseFloat(subtotal)"></CheckoutDetail>
+        <CheckoutDetail :order="order" :subtotal="parseFloat(subtotal)"></CheckoutDetail>
       </v-col>
 
     </v-row>
@@ -55,6 +55,13 @@
       Payment
     },
     data: () => ({
+      order:{
+        card: undefined,
+        store: undefined,
+        time: undefined,
+        cart: undefined,
+        uid: firebase.auth().currentUser.uid,
+      },
       categories: [],
       selection: 1,
       products: {},
@@ -72,6 +79,7 @@
             if(!Object.keys(this.products).length){
               router.push("/");
             }
+            this.order.cart = this.products;
             Object.keys(this.products).map(key => {
               this.subtotal += this.products[key].price * this.products[key].quantity;
             });
