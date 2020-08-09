@@ -11,7 +11,6 @@
         </v-btn>
       </v-card-actions>
 
-      <!-- selection-->
       <v-row v-if="state.step === 'select' ">
         <v-col cols="12" sm="12">
           <v-select
@@ -69,7 +68,8 @@
             <img v-bind:class="{ active: cardType ==='discovery'}" src="@/assets/cards/discover.png"/>
           </v-col>
           <v-col class="pr-3">
-            <h6>Payment data protected by Grocery Store Showcase with encryption</h6>
+            <!--<v-icon dark>mdi-lock</v-icon>-->
+            <h6 class="protect__data">Payment data protected by Grocery Store Showcase with encryption</h6>
           </v-col>
 
           <v-col cols="12" sm="12">
@@ -161,6 +161,9 @@
     <script>
       export default {
         name: "Payment",
+        props: {
+          order: Object
+        },
         data () {
           return {
             cardType: null,
@@ -221,6 +224,8 @@
               }
             });
 
+            this.order.card = this.state.card;
+
             if(error){
               return;
             }
@@ -254,4 +259,6 @@
         width: 90px
       .cards img.active
         opacity: 1
+      .protect__data
+        color: grey
     </style>

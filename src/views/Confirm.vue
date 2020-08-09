@@ -7,9 +7,9 @@
             <h2 class="ma-10 text-h3" >Thanks for your shop!</h2>
             <p>You are awesome <span>{{name}}</span> </p>
             <p>We're working to get your order done.<br/> You can pick up at the store on</p>
-            <p><span>{{pickupDate}}</span> at <span>{{pickupHour}}:00</span></p>
+            <p><span>{{order[0].date}}</span> <span>{{order[0].time}}</span></p>
             <p>You'll need the next order number:</p>
-            <p><span>{{orderNumber}}</span></p>
+            <p><span>{{order[0].id}}</span></p>
             <p>Don't forget bring your ID.</p>
           </v-container>
         </v-card>
@@ -38,6 +38,7 @@
 <script>
 import firebase from 'firebase';
 import router from "@/router";
+import {firestore} from "@/main";
 
 export default {
   name: 'Confirm',
@@ -50,31 +51,20 @@ export default {
     }
   },
   data: () => {
-    function generateDate(){
-      function getRandomDate(from, to) {
-        from = from.getTime();
-        to = to.getTime();
-        return new Date(from + Math.random() * (to - from));
-      }
-      const today = new Date() ;
-      const next5Days = new Date();
-      next5Days.setDate(next5Days.getDate() + 5 );
-      const randomDate = getRandomDate(today,next5Days);
-      const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'long', day: '2-digit' })
-      const [{ value: month },,{ value: day },,] = dateTimeFormat.formatToParts(randomDate)
-      return `${month}, ${day}`;
-    }
-
     return {
-      orderNumber: Math.floor(Math.random() * 999999) + 10000,
-      pickupDate: generateDate(),
-      pickupHour:  Math.floor(Math.random() * (18 - 10 + 1) + 10),
-      name: firebase.auth().currentUser.displayName
+      name: firebase.auth().currentUser.displayName,
+      uid: firebase.auth().currentUser.uid
     }
   },
-  firestore () {
+  firestore() {
     return {
-    }
+      order: firestore
+                .collection("order")
+                .where("uid", "==",this.uid)
+                .orderBy("created", "desc")
+                .limit(1)
+      ,
+    };
   },
 }
 </script>

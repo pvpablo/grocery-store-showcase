@@ -55,6 +55,7 @@
             return-object
             name="time"
             v-validate="'required'"
+            @change="selectTime"
             :items="this.times"
             label="Select an available time for this store"
         ></v-select>
@@ -77,7 +78,10 @@
   import { getDownloadURL } from '@/utils/firebaseStorage.js'
   export default {
     name: "StoreSelect",
-    props: ['stores'],
+    props: {
+      stores: Array,
+      order: Object
+    },
     components: {
     },
     data () {
@@ -95,7 +99,9 @@
         this.state.step = value;
       },
       selectStore: async function (store) {
+        console.log(store);
         this.state.selection = {
+          id: store.id,
           name: store.name ,
           address: store.address,
           phone: store.phone,
@@ -105,10 +111,13 @@
         for(let i = store.open; i < store.close; i++){
           this.times.push({value: i , label: `From ${i}:00 to ${i+1}:00`});
         }
+        this.order.store = this.state.selection.id;
         this.changeStep('done');
       },
+      selectTime: function($event){
+        this.order.time = $event.label;
+      },
       cancel : function () {
-        console.log(this.state.selection)
         if(this.state.selection){
           this.changeStep('done');
         }else{
