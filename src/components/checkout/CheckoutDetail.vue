@@ -2,11 +2,11 @@
   <v-card
     class="mx-auto mb-10 ml-8 pa-5"
   >
-      <h3>Details</h3>
+      <h3>Order Summary</h3>
     <v-list>
       <v-list-item>
         <v-list-item-content class="label">Subtotal</v-list-item-content>
-        <v-list-item-content class="value">${{ subtotal }}</v-list-item-content>
+        <v-list-item-content class="value">${{ getSubtotal() }}</v-list-item-content>
       </v-list-item>
       <v-list-item>
         <v-list-item-content class="label">Tax</v-list-item-content>
@@ -22,6 +22,7 @@
       <v-btn block class="mr-2 mt-5" @click="placeOrder" color="secondary" dark>
         Place order
       </v-btn>
+    <v-divider></v-divider>
   </v-card>
 </template>
 
@@ -36,7 +37,6 @@
       order: Object
     },
     components: {
-
     },
     data () {
       return {
@@ -46,6 +46,12 @@
       }
     },
     methods:{
+      goHome: function(){
+        router.push("/")
+      },
+      getSubtotal(){
+        return this.subtotal.toFixed(2);
+      },
       getTax(){
         this.tax = this.subtotal * 0.16;
         return this.tax.toFixed(2);
@@ -82,7 +88,7 @@
         }
 
         if(!this.order.card){
-          this.error_label = "Please a payment method before continue";
+          this.error_label = "Please select a payment method before continue";
           return false;
         }
 
@@ -92,10 +98,10 @@
         this.order.date = this.generateDate();
 
         firestore
-            .collection("order")
-            .doc(`${orderNumber}`)
+            .collection("orders")
+            .doc()
             .set(this.order)
-            .then(()=>{
+            .then( () => {
               firestore
                 .collection("cart")
                 .doc(this.order.uid)
