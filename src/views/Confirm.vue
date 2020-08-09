@@ -28,10 +28,6 @@
       </v-col>
     </v-row>
 
-
-
-
-
   </v-container>
 </template>
 
@@ -59,8 +55,8 @@ export default {
   firestore() {
     return {
       order: firestore
-                .collection("order")
-                .where("uid", "==",this.uid)
+                .collection("orders")
+                .where("uid", "==", this.uid)
                 .orderBy("created", "desc")
                 .limit(1)
       ,
