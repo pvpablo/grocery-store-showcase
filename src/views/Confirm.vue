@@ -1,20 +1,18 @@
 <template>
   <v-container class="mt-9 mb-16">
     <v-row>
-      <v-col cols="12" sm="8">
+      <v-col>
         <v-card>
           <v-container class="text-center text--lighten-5 mytext mb-16">
-            <h2 class="ma-10 text-h3" >Thanks for your shop!</h2>
-            <p>You are awesome <span>{{name}}</span> </p>
-            <p>We're working to get your order done.<br/> You can pick up at the store on</p>
-            <p><span>{{pickupDate}}</span> at <span>{{pickupHour}}:00</span></p>
-            <p>You'll need the next order number:</p>
-            <p><span>{{orderNumber}}</span></p>
-            <p>Don't forget bring your ID.</p>
+            <h2 class="ma-10 text-h3 success--text">Your oder has been successfully received!</h2>
+            <p>One of our associates will be in touch soon. Your order ID is {{ orderNumber }}</p>
+            <p>You can pick up at the store on <span>{{pickupDate}}</span> at <span>{{pickupHour}}:00</span></p>
+            <p>Please bring a valid ID or membership card to pickup your items.</p>
           </v-container>
         </v-card>
       </v-col>
-
+    </v-row>
+    <v-row class="justify-center">
       <v-col cols="12" sm="4">
         <v-card>
           <v-container>
@@ -36,7 +34,6 @@
 </template>
 
 <script>
-import firebase from 'firebase';
 import router from "@/router";
 
 export default {
@@ -69,7 +66,6 @@ export default {
       orderNumber: Math.floor(Math.random() * 999999) + 10000,
       pickupDate: generateDate(),
       pickupHour:  Math.floor(Math.random() * (18 - 10 + 1) + 10),
-      name: firebase.auth().currentUser.displayName
     }
   },
   firestore () {
