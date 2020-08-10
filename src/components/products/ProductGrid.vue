@@ -34,7 +34,6 @@ export default {
   data: () => ({
     categories: [],
     selection: 1,
-    cart: [],
     uid: firebase.auth().currentUser.uid,
   }),
   methods: {
@@ -48,7 +47,6 @@ export default {
   firestore() {
     return {
       categories: firestore.collection("products"),
-      cart: firestore.collection("cart").doc(this.uid)
     };
   },
 };
