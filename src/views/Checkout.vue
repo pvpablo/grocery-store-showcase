@@ -20,7 +20,7 @@
           </v-col>
         </v-row>
         <div v-if="order.cart && Object.keys(cart.products).length > 0">
-          <ProductList
+          <ProductListing
             v-for="product in cart.products"
             :key="product.id"
             :item="product"
@@ -48,7 +48,7 @@
 <script>
   import firebase from "firebase"
   import { firestore } from "@/main";
-  import ProductList from "@/components/checkout/ProductList.vue";
+  import ProductListing from "@/components/products/ProductListing.vue";
   import CheckoutDetail from "@/components/checkout/CheckoutDetail.vue";
   import StoreSelect from "@/components/checkout/StoreSelect.vue";
   import Payment from "@/components/checkout/Payment.vue";
@@ -57,7 +57,7 @@
     name: "Checkout",
     components: {
       CheckoutDetail,
-      ProductList,
+      ProductListing,
       StoreSelect,
       Payment
     },
