@@ -105,13 +105,14 @@
           name: store.name ,
           address: store.address,
           phone: store.phone,
+          thumbnailRef: store.thumbnailRef,
           img:  await getDownloadURL(store.thumbnailRef)
         };
         this.times = [];
         for(let i = store.open; i < store.close; i++){
           this.times.push({value: i , label: `From ${i}:00 to ${i+1}:00`});
         }
-        this.order.store = this.state.selection.id;
+        this.order.store = this.state.selection;
         this.changeStep('done');
       },
       selectTime: function($event){

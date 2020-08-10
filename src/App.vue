@@ -75,6 +75,14 @@
             </v-list-item-icon>
             <v-list-item-title>Help</v-list-item-title>
           </v-list-item>
+          <v-divider color="#dedede" class="mb-5 mt-5"></v-divider>
+          <span class="subtitle--text custom-sub">FULFILLMENT</span>
+          <v-list-item @click="$router.push('/fulfillment/orders')">
+            <v-list-item-icon>
+              <v-icon>mdi-receipt</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Orders</v-list-item-title>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>

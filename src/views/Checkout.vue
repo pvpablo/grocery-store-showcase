@@ -12,15 +12,14 @@
             <span class="ml-3 text-h6">Payment</span>
           </v-col>
         </v-row>
-
         <Payment :order="order"></Payment>
-
+        
         <v-row class="pr-3" height="200px">
           <v-col cols="12" sm="8" class="mt-3">
             <span class="ml-3 text-h6">Shopping cart</span>
           </v-col>
         </v-row>
-        <div v-if="Object.keys(cart.products).length > 0">
+        <div v-if="order.cart && Object.keys(cart.products).length > 0">
           <ProductList
             v-for="product in cart.products"
             :key="product.id"
@@ -55,7 +54,7 @@
   import Payment from "@/components/checkout/Payment.vue";
   // import router from "@/router";
   export default {
-    name: "HelloWorld",
+    name: "Checkout",
     components: {
       CheckoutDetail,
       ProductList,
@@ -71,7 +70,8 @@
         user: {
           uid: firebase.auth().currentUser.uid,
           displayName: firebase.auth().currentUser.displayName,
-        }
+        },
+        status: 'Scheduled',
       },
       categories: [],
       selection: 1,
@@ -85,16 +85,19 @@
           .doc(this.uid)
           .onSnapshot( (querySnapshot) => {
             this.subtotal = 0;
-            this.products = querySnapshot.data().products;
-            if(!Object.keys(this.products).length){
-              this.order.cart = undefined
-            } else {
-              this.order.cart = this.products;
+            if (querySnapshot.data()) {
+              this.products = querySnapshot.data().products;
+              if(!Object.keys(this.products).length){
+                this.order.cart = undefined
+              } else {
+                this.order.cart = this.products;
+              }
+              Object.keys(this.products).map(key => {
+                this.subtotal += this.products[key].price * this.products[key].quantity;
+              });
+              this.subtotal = +this.subtotal.toFixed(2);
             }
-            Object.keys(this.products).map(key => {
-              this.subtotal += this.products[key].price * this.products[key].quantity;
-            });
-            this.subtotal = +this.subtotal.toFixed(2);
+            
           })
     },
     firestore() {

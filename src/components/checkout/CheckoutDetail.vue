@@ -83,34 +83,34 @@ export default {
         ,
         { value: day },
         ,
-      ] = dateTimeFormat.formatToParts(randomDate);
+      ] = dateTimeFormat.formatToParts(randomDate)
       return `${month}, ${day}`;
     },
     placeOrder: function() {
       if (!this.order.store) {
-        this.error_label = "Please select a store";
-        return false;
+        this.error_label = "Please select a store"
+        return false
       }
 
       if (!this.order.time) {
-        this.error_label = "Please select a pick up timeslot";
-        return false;
+        this.error_label = "Please select a pick up timeslot"
+        return false
       }
 
       if (!this.order.card) {
-        this.error_label = "Please select a payment method";
-        return false;
+        this.error_label = "Please select a payment method"
+        return false
       }
 
       if (!this.order.cart) {
-        this.error_label = "Please select one or more products";
-        return false;
+        this.error_label = "Please select one or more products"
+        return false
       }
 
-      const orderNumber = Math.floor(Math.random() * 9999999) + 10000;
-      this.order.orderNumber = orderNumber;
-      this.order.created = new Date();
-      this.order.date = this.generateDate();
+      const orderNumber = Math.floor(Math.random() * 9999999) + 10000
+      this.order.orderNumber = orderNumber
+      this.order.created = new Date()
+      this.order.date = this.generateDate()
 
       firestore
         .collection("orders")

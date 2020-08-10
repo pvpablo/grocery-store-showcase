@@ -52,8 +52,7 @@ export default {
   firestore() {
     return {
       order: firestore.collection("orders").doc(this.$route.params.orderId)
-      ,
-    };
+    }
   },
 }
 </script>

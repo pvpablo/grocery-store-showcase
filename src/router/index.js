@@ -27,8 +27,13 @@ const routes = [
   },
   {
     path: '/fulfillment/orders',
-    name: 'InternalOrders',
+    name: 'internal_orders',
     component: () => import('../views/fulfillment/Orders.vue') //TODO: add role based validation
+  },
+  {
+    path: '/fulfillment/orders/:orderId',
+    name: 'internal_order_detail',
+    component: () => import('../views/fulfillment/OrderDetail.vue') //TODO: add role based validation
   }
 ]
 
