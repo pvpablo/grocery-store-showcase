@@ -117,7 +117,6 @@ export default {
         .add(this.order)
         .then((docRef) => {
           this.orderId = docRef.id
-          console.log(this.orderId)
           firestore
             .collection("cart")
             .doc(this.order.user.uid)

@@ -81,7 +81,7 @@
     }),
     created : function() {
       firestore
-          .collection("cart")
+          .collection(  "cart")
           .doc(this.uid)
           .onSnapshot( (querySnapshot) => {
             this.subtotal = 0;
