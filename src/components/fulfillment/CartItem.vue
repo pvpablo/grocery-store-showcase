@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import { firestore } from "@/main";
+  import { firestore } from "@/main"
   import { getDownloadURL } from '@/utils/firebaseStorage.js'
   export default {
     name: "CartItem",
