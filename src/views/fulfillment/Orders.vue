@@ -15,27 +15,40 @@
             <v-chip :color="getColor(item.status)" dark>{{ item.status }}</v-chip>
           </template>
           <template v-slot:[`item.actions`]="{ item }">
-            <v-btn color="primary" class="secondary--text" small dark @click="goToOrder(item)">
+            <v-btn color="primary" class="secondary--text mr-3" small dark @click="goToOrder(item)">
               <v-icon class="mr-2"
                 small>
                 mdi-eye
               </v-icon>
               Detail
             </v-btn>
+            <v-btn color="secondary" class="primary--text" small dark @click="manageOrder(item)">
+              <v-icon class="mr-2"
+                small>
+                mdi-briefcase
+              </v-icon>
+              Manage
+            </v-btn>
           </template>                   
         </v-data-table>
       </v-col>
     </v-row>
+    <AssignOrder :dialog="this.dialog" :order="this.selectedOrder" @update:dialog="closeDialog" />
   </v-container>
 </template>
 
 <script>
-import { firestore } from "@/main";
+import { firestore } from "@/main"
+import AssignOrder from '@/components/fulfillment/AssignOrder.vue'
 export default {
   name: "InternalOrders",
-  components: {},
+  components: {
+    AssignOrder
+  },
   data: () => {
     return {
+      dialog: false,
+      selectedOrder: {},
       headers: [
         {
           text: "Order Number",
@@ -69,6 +82,10 @@ export default {
     };
   },
   methods: {
+    closeDialog () {
+      this.dialog = false
+      this.selectedOrder = {}
+    },
     getColor (status) {
       if (status === 'Scheduled') return 'gray'
       else if (status === 'In Progress') return 'amber'
@@ -76,11 +93,15 @@ export default {
     },
     goToOrder (order) {
       this.$router.push({ name: "internal_order_detail", params: { orderId: order.id } })
+    },
+    manageOrder (order) {
+      this.selectedOrder = order
+      this.dialog = true
     }
   },
   firestore() {
     return {
-      orders: firestore.collection("orders").where('status', 'in', ['Scheduled', 'In Progress', 'Recently Completed']).orderBy('time'),
+      orders: firestore.collection("orders").orderBy('date').orderBy('time'),
     }
   },
 };

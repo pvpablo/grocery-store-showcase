@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar color="primary">
+    <v-app-bar color="primary" max-height="60">
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>Grocery Store Showcase</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -32,6 +32,7 @@
             >
               <v-icon right color="primary" class="pr-3">mdi-account</v-icon>
               {{ shortDisplayName }}
+              <v-icon right color="primary" class="pr-3">mdi-chevron-down</v-icon>
             </v-btn>
           </template>
           <v-list>
