@@ -99,7 +99,6 @@
         this.state.step = value;
       },
       selectStore: async function (store) {
-        console.log(store);
         this.state.selection = {
           id: store.id,
           name: store.name ,

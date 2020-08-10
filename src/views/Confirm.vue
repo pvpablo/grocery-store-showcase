@@ -5,7 +5,7 @@
         <v-card>
           <v-container class="text-center text--lighten-5 mytext mb-16">
             <h2 class="ma-10 text-h3 success--text">Your oder has been successfully received!</h2>
-            <p>One of our associates will be in touch soon. Your order ID is {{ order.id }}</p>
+            <p>One of our associates will be in touch soon. Your order ID is {{ order.orderNumber }}</p>
             <p>You can pick up at the store on <span>{{ order.date }}</span> at <span>{{ order.time }}</span></p>
             <p>Please bring a valid ID or membership card to pickup your items.</p>
           </v-container>

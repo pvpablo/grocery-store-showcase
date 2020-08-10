@@ -2,7 +2,7 @@
   <v-container>
     <v-row no-gutters>
       <v-col cols="12" sm="8">
-        <v-col cols="12" sm="8" class="mt-3">
+        <v-col cols="12" sm="8">
           <span class="text-h6">Pick up</span>
         </v-col>
         <StoreSelect  :order="order" v-bind:stores="stores"></StoreSelect>
@@ -19,9 +19,9 @@
             <span class="ml-3 text-h6">Shopping cart</span>
           </v-col>
         </v-row>
-        <div v-if="order.cart && Object.keys(cart.products).length > 0">
+        <div v-if="order.cart && Object.keys(order.cart).length > 0">
           <ProductListing
-            v-for="product in cart.products"
+            v-for="product in order.cart"
             :key="product.id"
             :item="product"
           />
@@ -36,8 +36,10 @@
         </v-card>
         </div>
       </v-col>
-
       <v-col cols="12" sm="4">
+        <v-col class="ml-8 pl-0">
+          <span class="text-h6">Order Summary</span>
+        </v-col>
         <CheckoutDetail :order="order" :subtotal="parseFloat(subtotal)"></CheckoutDetail>
       </v-col>
 
@@ -92,17 +94,12 @@
               } else {
                 this.order.cart = this.products;
               }
-              Object.keys(this.products).map(key => {
-                this.subtotal += this.products[key].price * this.products[key].quantity;
-              });
-              this.subtotal = +this.subtotal.toFixed(2);
             }
             
           })
     },
     firestore() {
       return {
-        cart: firestore.collection("cart").doc(this.uid),
         stores: firestore.collection("stores").orderBy('name'),
       };
     },

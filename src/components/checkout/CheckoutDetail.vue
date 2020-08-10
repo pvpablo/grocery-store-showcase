@@ -1,11 +1,10 @@
 <template>
   <v-card class="mx-auto mb-10 ml-8 pa-5">
-    <h3>Order Summary</h3>
-    <v-list>
+    <v-list v-if="order.cart">
       <v-list-item>
         <v-list-item-content class="label">Subtotal</v-list-item-content>
         <v-list-item-content class="value"
-          >${{ getSubtotal() }}</v-list-item-content
+          >${{ subtotal }}</v-list-item-content
         >
       </v-list-item>
       <v-list-item>
@@ -19,12 +18,18 @@
         >
       </v-list-item>
     </v-list>
-    <v-divider></v-divider>
-    <div v-if="error_label" class="error_msg mt-4">{{ error_label }}</div>
-    <v-btn block class="mr-2 mt-5" @click="placeOrder" color="secondary" dark>
-      Place order
-    </v-btn>
-    <v-divider></v-divider>
+    <v-list v-else>
+      <v-list-item>
+        <v-list-item-content class="label">No items in cart</v-list-item-content>
+      </v-list-item>
+    </v-list>
+    <div v-if="order.cart">
+      <v-divider></v-divider>
+      <div v-if="error_label" class="error_msg mt-4">{{ error_label }}</div>
+        <v-btn block class="mr-2 mt-5" @click="placeOrder" color="secondary" dark>
+          Place order
+        </v-btn>
+    </div>
   </v-card>
 </template>
 
@@ -35,7 +40,6 @@ import { firestore } from "@/main";
 export default {
   name: "CheckoutDetail",
   props: {
-    subtotal: Number,
     order: Object,
   },
   components: {},
@@ -44,24 +48,29 @@ export default {
       tax: 0,
       total: 0,
       error_label: undefined,
-      orderId: undefined
+      orderId: undefined,
     };
+  },
+  computed: {
+    subtotal: function (){
+      let subtotal = 0
+      for (const [key] of Object.entries((this.order.cart))) {
+        subtotal += this.order.cart[key].price * this.order.cart[key].quantity;
+      }
+      return subtotal.toFixed(2)
+    }
   },
   methods: {
     goHome: function() {
       router.push("/");
     },
-    getSubtotal() {
-      return this.subtotal.toFixed(2);
-    },
     getTax() {
-      this.tax = this.subtotal * 0.16;
-      return this.tax.toFixed(2);
+      this.tax = this.subtotal * 0.16
+      return this.tax.toFixed(2)
     },
     getTotal() {
-      // return (this.subtotal + this.taxes).toFixed(2);
-      const total = this.subtotal + this.tax;
-      return parseFloat(total).toFixed(2);
+      const total = this.subtotal + this.tax
+      return parseFloat(total).toFixed(2)
     },
     generateDate() {
       function getRandomDate(from, to) {
@@ -117,7 +126,6 @@ export default {
         .add(this.order)
         .then((docRef) => {
           this.orderId = docRef.id
-          console.log(this.orderId)
           firestore
             .collection("cart")
             .doc(this.order.user.uid)
