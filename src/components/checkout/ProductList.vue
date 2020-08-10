@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="mx-auto mb-10"
+    class="mx-auto mb-10 d-flex"
   >
     <v-row>
       <v-col cols="12" sm="3">

@@ -5,8 +5,8 @@
         <v-card>
           <v-container class="text-center text--lighten-5 mytext mb-16">
             <h2 class="ma-10 text-h3 success--text">Your oder has been successfully received!</h2>
-            <p>One of our associates will be in touch soon. Your order ID is {{ order[0].id }}</p>
-            <p>You can pick up at the store on <span>{{ order[0].date }}</span> at <span>{{ order[0].time }}</span></p>
+            <p>One of our associates will be in touch soon. Your order ID is {{ order.id }}</p>
+            <p>You can pick up at the store on <span>{{ order.date }}</span> at <span>{{ order.time }}</span></p>
             <p>Please bring a valid ID or membership card to pickup your items.</p>
           </v-container>
         </v-card>
@@ -27,7 +27,6 @@
     </v-row>
   </v-container>
 </template>
-
 <script>
 import router from "@/router";
 import firebase from "firebase"
@@ -35,27 +34,24 @@ import { firestore } from "@/main";
 
 export default {
   name: 'Confirm',
-  components: {
-
-  },
   methods:{
     goHome: function(){
       router.push("/")
     }
   },
+  created () {
+    this.orderId = this.$route.params.orderId
+  },
   data: () => {
     return {
       name: firebase.auth().currentUser.displayName,
-      uid: firebase.auth().currentUser.uid
+      uid: firebase.auth().currentUser.uid,
+      order: {}
     }
   },
   firestore() {
     return {
-      order: firestore
-                .collection("orders")
-                .where("uid", "==", this.uid)
-                .orderBy("created", "desc")
-                .limit(1)
+      order: firestore.collection("orders").doc(this.$route.params.orderId)
       ,
     };
   },

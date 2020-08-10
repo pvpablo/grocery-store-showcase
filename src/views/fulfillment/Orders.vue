@@ -23,7 +23,7 @@ export default {
   },
   firestore() {
     return {
-      orders: firestore.collection("order").orderBy('created'),
+      orders: firestore.collection("orders").orderBy('created'),
     }
   },
 }

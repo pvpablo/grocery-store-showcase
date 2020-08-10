@@ -21,14 +21,14 @@ const routes = [
     component: () => import('../views/Products.vue')
   },
   {
-    path: '/confirm',
-    name: 'Confirm',
+    path: '/confirm/:orderId',
+    name: 'confirm',
     component: () => import('../views/Confirm.vue')
   },
   {
-    path: '/internal/orders',
+    path: '/fulfillment/orders',
     name: 'InternalOrders',
-    component: () => import('../views/internal/Orders.vue') //TODO: add role based validation
+    component: () => import('../views/fulfillment/Orders.vue') //TODO: add role based validation
   }
 ]
 
