@@ -9,6 +9,7 @@
   "author": "pvpablo",
   "license": "ISC",
   "dependencies": {
-    "firebase-admin": "^9.0.0"
+    "firebase-admin": "^9.0.0",
+    "moment": "^2.27.0"
   }
 }
