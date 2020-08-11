@@ -34,11 +34,6 @@ const routes = [
     path: '/fulfillment/orders/:orderId',
     name: 'internal_order_detail',
     component: () => import('../views/fulfillment/OrderDetail.vue') //TODO: add role based validation
-  },
-  {
-    path: '/dashboard/ecommerce',
-    name: 'ecommerce',
-    component: () => import('../views/dashboard/Ecommerce.vue')
   }
 ]
 
