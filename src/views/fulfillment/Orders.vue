@@ -1,41 +1,5 @@
 <template>
   <v-container class="mt-9 mb-16">
-
-    <v-row :align="alignment" :justify="justify">
-      <v-col cols="12"  sm="4" >
-        <span class="ml-3 text-h6">Sessions</span>
-        <v-card>
-          <bar-chart  :chart-data="datacollection"></bar-chart>
-        </v-card>
-      </v-col>
-      <v-col cols="12" sm="1"></v-col>
-
-      <v-col cols="12" sm="4" >
-        <span class="ml-3 text-h6">Orders</span>
-        <v-card >
-          <pie-chart :chart-data="orderscollection"></pie-chart>
-        </v-card>
-      </v-col>
-
-
-    </v-row >
-    <v-row :align="alignment" :justify="justify">
-      <v-col cols="12" sm="4" >
-        <span class="ml-3 text-h6">Revenue</span>
-        <v-card >
-          <line-chart :chart-data="revenuecollection"></line-chart>
-        </v-card>
-      </v-col>
-      <v-col cols="12" sm="1"></v-col>
-      <v-col cols="12" sm="4">
-        <span class="ml-3 text-h6">Carts</span>
-        <v-card>
-          <line-chart :chart-data="cartcollection"></line-chart>
-        </v-card>
-      </v-col>
-    </v-row>
-
-
     <v-row>
       <v-col cols="12">
         <span class="ml-3 text-h6">All active orders</span>
@@ -69,6 +33,38 @@
         </v-data-table>
       </v-col>
     </v-row>
+
+    <v-row :align="alignment" :justify="justify">
+      <v-col cols="12"  sm="6" >
+        <span class="text-h6">Sessions</span>
+        <v-card>
+          <bar-chart  :chart-data="datacollection" :options="chartOptions" height="150"></bar-chart>
+        </v-card>
+      </v-col>
+
+      <v-col cols="12" sm="6" >
+        <span class="text-h6">Orders</span>
+        <v-card >
+          <bar-chart :chart-data="orderscollection" :options="chartOptions" height="150"></bar-chart>
+        </v-card>
+      </v-col>
+
+
+    </v-row >
+    <v-row :align="alignment" :justify="justify">
+      <v-col cols="12" sm="6" >
+        <span class="text-h6">Revenue</span>
+        <v-card >
+          <line-chart :chart-data="revenuecollection" :options="chartOptions" height="150"></line-chart>
+        </v-card>
+      </v-col>
+      <v-col cols="12" sm="6">
+        <span class="text-h6">Cart Abandonment</span>
+        <v-card>
+          <line-chart :chart-data="cartcollection" :options="chartOptions" height="150"></line-chart>
+        </v-card>
+      </v-col>
+    </v-row>
     <AssignOrder :dialog="this.dialog" :order="this.selectedOrder" @update:dialog="closeDialog" />
   </v-container>
 </template>
@@ -78,7 +74,7 @@ import { firestore } from "@/main"
 import AssignOrder from '@/components/fulfillment/AssignOrder.vue'
 import BarChart from "@/components/graphs/BarChart";
 import LineChart from "@/components/graphs/LineChart";
-import PieChart from "@/components/graphs/PieChart";
+// import PieChart from "@/components/graphs/PieChart";
 import moment from "moment";
 
 export default {
@@ -87,7 +83,7 @@ export default {
     AssignOrder,
     BarChart,
     LineChart,
-    PieChart
+    // PieChart
   },
   data: () => {
     return {
@@ -134,6 +130,26 @@ export default {
         width: '100%',
         position: 'relative',
       },
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [{
+              gridLines: {
+                  display: false
+              }
+          }],
+          yAxes: [{
+              gridLines: {
+                  display: false
+              },
+              ticks: {
+                maxTicksLimit: 5,
+                beginAtZero: true,
+              }
+          }]
+      }
+      }
     };
   },
   mounted () {
@@ -168,17 +184,17 @@ export default {
       }];
 
       const cartDataset =[{
-        label: "Completed carts",
+        label: "Total orders",
         borderColor: '#f44336',
         fill: false,
         data: this.stats.map(element => element.completed_orders)
       },
-        {
-          label: "Total orders",
-          borderColor: '#555555',
-          fill: false,
-          data: this.stats.map(element => element.total_orders)
-        }];
+      {
+        label: "Active Shopping Carts",
+        borderColor: '#555555',
+        fill: false,
+        data: this.stats.map(element => element.total_orders)
+      }];
 
       const revenueDataset =[{
         label: "Revenue (Thousands $)",
@@ -203,17 +219,18 @@ export default {
 
       const ordersDataset =[
         {
+          label: "Shopping Orders",
           data: [
-            this.totals["completed"],
+            this.totals["scheduled"],
             this.totals["canceled"],
             this.totals["in-progress"],
-            this.totals["scheduled"],
+            this.totals["completed"],
           ],
           backgroundColor:[
-            "#4baf4f",
+            "#545454",
             "#db3214",
             "#ffc106",
-            "#545454",
+            "#4baf4f",
           ]
         }
       ];
@@ -235,7 +252,7 @@ export default {
       }
 
       this.orderscollection = {
-        labels: ["Completed","Canceled","In Progress","Scheduled"],
+        labels: ["Scheduled","Canceled","In Progress","Completed"],
         datasets:ordersDataset
       }
     },
