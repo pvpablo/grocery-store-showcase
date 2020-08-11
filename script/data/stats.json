@@ -1,0 +1,578 @@
+[
+  {
+    "id": "5f320dd07ba1cf868ed30add",
+    "amount": "207516.01",
+    "sessions": 8001,
+    "completed_orders": 2638,
+    "total_orders": 3406,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0af8195d6d33dc159",
+    "amount": "241049.7",
+    "sessions": 2052,
+    "completed_orders": 2845,
+    "total_orders": 3268,
+    "date": ""
+  },
+  {
+    "id": "5f320dd096b0f00c19b9c7de",
+    "amount": "379309.2",
+    "sessions": 3473,
+    "completed_orders": 2006,
+    "total_orders": 3169,
+    "date": ""
+  },
+  {
+    "id": "5f320dd07dd0a8cd43c43ec0",
+    "amount": "276485.45",
+    "sessions": 8617,
+    "completed_orders": 1557,
+    "total_orders": 3442,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0d0d7b60caf625170",
+    "amount": "348585.46",
+    "sessions": 7270,
+    "completed_orders": 1961,
+    "total_orders": 3201,
+    "date": ""
+  },
+  {
+    "id": "5f320dd03ee8c99e090893d1",
+    "amount": "264695.02",
+    "sessions": 8070,
+    "completed_orders": 1567,
+    "total_orders": 3391,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0288df600cfd11582",
+    "amount": "349628.93",
+    "sessions": 4422,
+    "completed_orders": 2324,
+    "total_orders": 3126,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0431e98d6e043f7e8",
+    "amount": "294065.68",
+    "sessions": 6204,
+    "completed_orders": 2906,
+    "total_orders": 3437,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0c78909bb608617d6",
+    "amount": "169935.84",
+    "sessions": 5701,
+    "completed_orders": 2888,
+    "total_orders": 3316,
+    "date": ""
+  },
+  {
+    "id": "5f320dd02eda4ebd9f0b3391",
+    "amount": "272741.97",
+    "sessions": 3371,
+    "completed_orders": 2556,
+    "total_orders": 3461,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0bbdd13d6dfcd8b0b",
+    "amount": "161062.17",
+    "sessions": 5386,
+    "completed_orders": 1834,
+    "total_orders": 3489,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0244941d5f66d7004",
+    "amount": "316493.96",
+    "sessions": 5664,
+    "completed_orders": 1655,
+    "total_orders": 3273,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0643148c0c9bcc41e",
+    "amount": "351649.82",
+    "sessions": 3939,
+    "completed_orders": 2091,
+    "total_orders": 3453,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0abed6fda6426f673",
+    "amount": "255957.47",
+    "sessions": 8292,
+    "completed_orders": 2258,
+    "total_orders": 3184,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0b290950ae0c48b77",
+    "amount": "337871.12",
+    "sessions": 6960,
+    "completed_orders": 2496,
+    "total_orders": 3394,
+    "date": ""
+  },
+  {
+    "id": "5f320dd06e5200dfac3384db",
+    "amount": "256282.37",
+    "sessions": 6077,
+    "completed_orders": 1967,
+    "total_orders": 3478,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0ec12f7030760074b",
+    "amount": "368120.2",
+    "sessions": 3071,
+    "completed_orders": 2235,
+    "total_orders": 3475,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0133675b975c92415",
+    "amount": "289883.53",
+    "sessions": 9202,
+    "completed_orders": 2345,
+    "total_orders": 3308,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0e8e25f3ad43eb782",
+    "amount": "361594.56",
+    "sessions": 8739,
+    "completed_orders": 1666,
+    "total_orders": 3276,
+    "date": ""
+  },
+  {
+    "id": "5f320dd061370e1cded32e84",
+    "amount": "203755.63",
+    "sessions": 8986,
+    "completed_orders": 2260,
+    "total_orders": 3495,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0f3427511bd789ae1",
+    "amount": "379630.8",
+    "sessions": 9874,
+    "completed_orders": 2275,
+    "total_orders": 3329,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0205f8129ff3ddec6",
+    "amount": "266787.38",
+    "sessions": 2635,
+    "completed_orders": 2096,
+    "total_orders": 3181,
+    "date": ""
+  },
+  {
+    "id": "5f320dd046020f17baea945e",
+    "amount": "314240.75",
+    "sessions": 5874,
+    "completed_orders": 1983,
+    "total_orders": 3002,
+    "date": ""
+  },
+  {
+    "id": "5f320dd04e63c386993a0e5a",
+    "amount": "300471.95",
+    "sessions": 3731,
+    "completed_orders": 1640,
+    "total_orders": 3266,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0602f3e9c4670d03a",
+    "amount": "323844.2",
+    "sessions": 4100,
+    "completed_orders": 2045,
+    "total_orders": 3270,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0bc27c016430f274f",
+    "amount": "173976.04",
+    "sessions": 4280,
+    "completed_orders": 2876,
+    "total_orders": 3072,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0fdc8dcd1eb88f3e1",
+    "amount": "327144.34",
+    "sessions": 2538,
+    "completed_orders": 2184,
+    "total_orders": 3246,
+    "date": ""
+  },
+  {
+    "id": "5f320dd025aaaab24fb9bcd3",
+    "amount": "309438.05",
+    "sessions": 5152,
+    "completed_orders": 2841,
+    "total_orders": 3473,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0fe04595ff26f7a63",
+    "amount": "276439.24",
+    "sessions": 4589,
+    "completed_orders": 2494,
+    "total_orders": 3136,
+    "date": ""
+  },
+  {
+    "id": "5f320dd063ad476c887fc781",
+    "amount": "263094.06",
+    "sessions": 3168,
+    "completed_orders": 1617,
+    "total_orders": 3257,
+    "date": ""
+  },
+  {
+    "id": "5f320dd02d84bb230da938f0",
+    "amount": "344957.92",
+    "sessions": 2047,
+    "completed_orders": 1848,
+    "total_orders": 3402,
+    "date": ""
+  },
+  {
+    "id": "5f320dd079fb60e8de7dac75",
+    "amount": "156286.98",
+    "sessions": 2848,
+    "completed_orders": 1817,
+    "total_orders": 3444,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0a5518da0a0921221",
+    "amount": "347337.91",
+    "sessions": 4054,
+    "completed_orders": 1965,
+    "total_orders": 3463,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0a6d3bfd4382f53ff",
+    "amount": "264985.84",
+    "sessions": 7599,
+    "completed_orders": 1906,
+    "total_orders": 3146,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0cb14b9b5864d6bf5",
+    "amount": "310941.22",
+    "sessions": 4217,
+    "completed_orders": 1725,
+    "total_orders": 3452,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0115d12a1001c9010",
+    "amount": "319875.27",
+    "sessions": 4821,
+    "completed_orders": 1964,
+    "total_orders": 3328,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0b560efa05174098f",
+    "amount": "189460.63",
+    "sessions": 7774,
+    "completed_orders": 2908,
+    "total_orders": 3176,
+    "date": ""
+  },
+  {
+    "id": "5f320dd015406567940b24ca",
+    "amount": "365608.33",
+    "sessions": 2707,
+    "completed_orders": 1795,
+    "total_orders": 3342,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0e0fbae2ca980a33f",
+    "amount": "233752.79",
+    "sessions": 2335,
+    "completed_orders": 2129,
+    "total_orders": 3182,
+    "date": ""
+  },
+  {
+    "id": "5f320dd076e371f1f1d3bef5",
+    "amount": "212020.7",
+    "sessions": 8160,
+    "completed_orders": 2407,
+    "total_orders": 3392,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0e7cae62af81290cc",
+    "amount": "331686.01",
+    "sessions": 5296,
+    "completed_orders": 2195,
+    "total_orders": 3305,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0a1c9638415a87052",
+    "amount": "184418.22",
+    "sessions": 4574,
+    "completed_orders": 1740,
+    "total_orders": 3372,
+    "date": ""
+  },
+  {
+    "id": "5f320dd066cf4e3f42712574",
+    "amount": "225483.9",
+    "sessions": 8423,
+    "completed_orders": 2296,
+    "total_orders": 3084,
+    "date": ""
+  },
+  {
+    "id": "5f320dd00d7555d469d794b3",
+    "amount": "347321.47",
+    "sessions": 3929,
+    "completed_orders": 2649,
+    "total_orders": 3425,
+    "date": ""
+  },
+  {
+    "id": "5f320dd07944714df31e48aa",
+    "amount": "398048.79",
+    "sessions": 8797,
+    "completed_orders": 1745,
+    "total_orders": 3218,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0104ddd231e30457b",
+    "amount": "244761.46",
+    "sessions": 4330,
+    "completed_orders": 2103,
+    "total_orders": 3359,
+    "date": ""
+  },
+  {
+    "id": "5f320dd09b16983ab6bd8e5a",
+    "amount": "248561.83",
+    "sessions": 7779,
+    "completed_orders": 1771,
+    "total_orders": 3441,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0b699eb279b76e7ef",
+    "amount": "307701.83",
+    "sessions": 7348,
+    "completed_orders": 2655,
+    "total_orders": 3193,
+    "date": ""
+  },
+  {
+    "id": "5f320dd07093fcedce905612",
+    "amount": "263940.64",
+    "sessions": 8835,
+    "completed_orders": 2356,
+    "total_orders": 3112,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0bb9fc52ffd86e2ed",
+    "amount": "257601.78",
+    "sessions": 5805,
+    "completed_orders": 2085,
+    "total_orders": 3410,
+    "date": ""
+  },
+  {
+    "id": "5f320dd08076a5b046977fbf",
+    "amount": "267025.62",
+    "sessions": 3894,
+    "completed_orders": 2951,
+    "total_orders": 3020,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0a62730083a6fbc9f",
+    "amount": "307841.02",
+    "sessions": 7265,
+    "completed_orders": 2439,
+    "total_orders": 3223,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0145e724f15991fc9",
+    "amount": "231577.88",
+    "sessions": 8950,
+    "completed_orders": 1995,
+    "total_orders": 3467,
+    "date": ""
+  },
+  {
+    "id": "5f320dd03a352363719f14c9",
+    "amount": "394385.04",
+    "sessions": 6567,
+    "completed_orders": 2652,
+    "total_orders": 3252,
+    "date": ""
+  },
+  {
+    "id": "5f320dd035a7a6eec31d5d20",
+    "amount": "261754.55",
+    "sessions": 3313,
+    "completed_orders": 1626,
+    "total_orders": 3320,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0149a8876cde07f34",
+    "amount": "186893.81",
+    "sessions": 5523,
+    "completed_orders": 1529,
+    "total_orders": 3269,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0204b8bd2fced5fba",
+    "amount": "392904.7",
+    "sessions": 5479,
+    "completed_orders": 1603,
+    "total_orders": 3041,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0e4fc5a1262792ecb",
+    "amount": "394245.37",
+    "sessions": 6702,
+    "completed_orders": 2405,
+    "total_orders": 3463,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0a2559044560de764",
+    "amount": "216222.62",
+    "sessions": 3235,
+    "completed_orders": 1729,
+    "total_orders": 3033,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0d58e88aa5119633e",
+    "amount": "386751.32",
+    "sessions": 5270,
+    "completed_orders": 2060,
+    "total_orders": 3220,
+    "date": ""
+  },
+  {
+    "id": "5f320dd02fd32985b59da94a",
+    "amount": "305119.83",
+    "sessions": 6010,
+    "completed_orders": 1717,
+    "total_orders": 3348,
+    "date": ""
+  },
+  {
+    "id": "5f320dd00658a85f848f6cca",
+    "amount": "216838.3",
+    "sessions": 7706,
+    "completed_orders": 2977,
+    "total_orders": 3183,
+    "date": ""
+  },
+  {
+    "id": "5f320dd094758986619024f4",
+    "amount": "210819.95",
+    "sessions": 3334,
+    "completed_orders": 2025,
+    "total_orders": 3449,
+    "date": ""
+  },
+  {
+    "id": "5f320dd03cf0446069829ca6",
+    "amount": "215349.2",
+    "sessions": 8142,
+    "completed_orders": 2845,
+    "total_orders": 3230,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0c528d5b7ae640119",
+    "amount": "328191.13",
+    "sessions": 9648,
+    "completed_orders": 2519,
+    "total_orders": 3164,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0e294a5eaf1adab4b",
+    "amount": "226526.76",
+    "sessions": 4131,
+    "completed_orders": 2745,
+    "total_orders": 3384,
+    "date": ""
+  },
+  {
+    "id": "5f320dd077aab98867dfccb4",
+    "amount": "157413.16",
+    "sessions": 6831,
+    "completed_orders": 2942,
+    "total_orders": 3293,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0ccd75c8714ed7658",
+    "amount": "196874.28",
+    "sessions": 6722,
+    "completed_orders": 1980,
+    "total_orders": 3467,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0c51ac4f875421d7e",
+    "amount": "170017.21",
+    "sessions": 7685,
+    "completed_orders": 2764,
+    "total_orders": 3276,
+    "date": ""
+  },
+  {
+    "id": "5f320dd01d1eca18da0c3161",
+    "amount": "248802.23",
+    "sessions": 9334,
+    "completed_orders": 1680,
+    "total_orders": 3151,
+    "date": ""
+  },
+  {
+    "id": "5f320dd0240a36636aac9b15",
+    "amount": "161237.94",
+    "sessions": 7308,
+    "completed_orders": 2875,
+    "total_orders": 3255,
+    "date": ""
+  },
+  {
+    "id": "5f320dd038595742fc870e39",
+    "amount": "347232.29",
+    "sessions": 5036,
+    "completed_orders": 2384,
+    "total_orders": 3474,
+    "date": ""
+  }
+]
