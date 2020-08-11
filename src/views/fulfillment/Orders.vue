@@ -1,38 +1,51 @@
 <template>
   <v-container class="mt-9 mb-16">
-    <v-row>
-      <v-col cols="12" sm="4">
+
+    <v-row :align="alignment" :justify="justify">
+      <v-col cols="12"  sm="4" >
         <span class="ml-3 text-h6">Sessions</span>
         <v-card>
-            <bar-chart :chart-data="datacollection"></bar-chart>
+          <bar-chart  :chart-data="datacollection"></bar-chart>
+        </v-card>
+      </v-col>
+      <v-col cols="12" sm="1"></v-col>
+
+      <v-col cols="12" sm="4" >
+        <span class="ml-3 text-h6">Orders</span>
+        <v-card >
+          <pie-chart :chart-data="orderscollection"></pie-chart>
         </v-card>
       </v-col>
 
+
+    </v-row >
+    <v-row :align="alignment" :justify="justify">
+      <v-col cols="12" sm="4" >
+        <span class="ml-3 text-h6">Revenue</span>
+        <v-card >
+          <line-chart :chart-data="revenuecollection"></line-chart>
+        </v-card>
+      </v-col>
+      <v-col cols="12" sm="1"></v-col>
       <v-col cols="12" sm="4">
         <span class="ml-3 text-h6">Carts</span>
         <v-card>
           <line-chart :chart-data="cartcollection"></line-chart>
         </v-card>
       </v-col>
-
-      <v-col cols="12" sm="4">
-        <span class="ml-3 text-h6">Revenue</span>
-        <v-card>
-          <bar-chart :chart-data="revenuecollection"></bar-chart>
-        </v-card>
-      </v-col>
     </v-row>
+
 
     <v-row>
       <v-col cols="12">
-      <span class="ml-3 text-h6">All active orders</span>
+        <span class="ml-3 text-h6">All active orders</span>
       </v-col>
       <v-col>
         <v-data-table
-          :headers="headers"
-          :items="orders"
-          :items-per-page="5"
-          class="elevation-1"
+            :headers="headers"
+            :items="orders"
+            :items-per-page="5"
+            class="elevation-1"
         >
           <template v-slot:[`item.status`]="{ item }">
             <v-chip :color="getColor(item.status)" dark>{{ item.status }}</v-chip>
@@ -40,19 +53,19 @@
           <template v-slot:[`item.actions`]="{ item }">
             <v-btn color="primary" class="secondary--text mr-3" small dark @click="goToOrder(item)">
               <v-icon class="mr-2"
-                small>
+                      small>
                 mdi-eye
               </v-icon>
               Detail
             </v-btn>
             <v-btn color="secondary" class="primary--text" small dark @click="manageOrder(item)">
               <v-icon class="mr-2"
-                small>
+                      small>
                 mdi-briefcase
               </v-icon>
               Manage
             </v-btn>
-          </template>                   
+          </template>
         </v-data-table>
       </v-col>
     </v-row>
@@ -65,6 +78,7 @@ import { firestore } from "@/main"
 import AssignOrder from '@/components/fulfillment/AssignOrder.vue'
 import BarChart from "@/components/graphs/BarChart";
 import LineChart from "@/components/graphs/LineChart";
+import PieChart from "@/components/graphs/PieChart";
 import moment from "moment";
 
 export default {
@@ -72,7 +86,8 @@ export default {
   components: {
     AssignOrder,
     BarChart,
-    LineChart
+    LineChart,
+    PieChart
   },
   data: () => {
     return {
@@ -81,6 +96,7 @@ export default {
       datacollection: {},
       revenuecollection: {},
       cartcollection: {},
+      orderscollection: {},
       headers: [
         {
           text: "Order Number",
@@ -88,29 +104,36 @@ export default {
           sortable: true,
           value: "orderNumber",
         },
-        { 
-          text: "Store", 
-          value: "store.name" 
+        {
+          text: "Store",
+          value: "store.name"
         },
-        { 
-          text: "Order Date", 
-          value: "date" 
+        {
+          text: "Order Date",
+          value: "date"
         },
-        { 
-          text: "Pick up Window", 
-          value: "time" 
+        {
+          text: "Pick up Window",
+          value: "time"
         },
-        { 
-          text: "Status", 
-          value: "status" 
+        {
+          text: "Status",
+          value: "status"
         },
-        { 
-          text: 'Actions', 
-          value: 'actions', 
-          sortable: false 
+        {
+          text: 'Actions',
+          value: 'actions',
+          sortable: false
         }
       ],
       orders: [],
+      alignment:"center",
+      justify:"center",
+      myStyles: {
+        height: '300px',
+        width: '100%',
+        position: 'relative',
+      },
     };
   },
   mounted () {
@@ -142,14 +165,14 @@ export default {
         label: "User Sessions",
         backgroundColor: '#4caf50',
         data: this.stats.map(element => element.sessions)
-        }];
+      }];
 
       const cartDataset =[{
-          label: "Completed orders",
-          borderColor: '#f44336',
-          fill: false,
-          data: this.stats.map(element => element.completed_orders)
-        },
+        label: "Completed carts",
+        borderColor: '#f44336',
+        fill: false,
+        data: this.stats.map(element => element.completed_orders)
+      },
         {
           label: "Total orders",
           borderColor: '#555555',
@@ -159,9 +182,42 @@ export default {
 
       const revenueDataset =[{
         label: "Revenue (Thousands $)",
-        backgroundColor: '#1565C0',
-        data: this.stats.map(element => element.amount/1000)
+        borderColor: '#1565C0',
+        fill: false,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutoutPercentage: 80,
+          legend: {
+            display: false
+          },
+          tooltips: {
+            enabled: false
+          },
+          hover: {
+            mode: false
+          }
+        },
+        data: this.stats.map(element => (element.amount/1000).toFixed(2))
       }];
+
+      const ordersDataset =[
+        {
+          data: [
+            this.totals["completed"],
+            this.totals["canceled"],
+            this.totals["in-progress"],
+            this.totals["scheduled"],
+          ],
+          backgroundColor:[
+            "#4baf4f",
+            "#db3214",
+            "#ffc106",
+            "#545454",
+          ]
+        }
+      ];
+      console.log(this.totals.canceled)
 
       this.datacollection = {
         labels: labels,
@@ -177,6 +233,11 @@ export default {
         labels: labels,
         datasets:cartDataset
       }
+
+      this.orderscollection = {
+        labels: ["Completed","Canceled","In Progress","Scheduled"],
+        datasets:ordersDataset
+      }
     },
     getRandomInt () {
       return Math.floor(Math.random() * (50 - 5 + 1)) + 5
@@ -186,6 +247,7 @@ export default {
     return {
       orders: firestore.collection("orders").orderBy('date').orderBy('time'),
       stats: firestore.collection("stats").orderBy('date'),
+      totals: firestore.collection("totals").doc("august"),
     }
   },
 };
