@@ -34,7 +34,12 @@ const routes = [
     path: '/fulfillment/orders/:orderId',
     name: 'internal_order_detail',
     component: () => import('../views/fulfillment/OrderDetail.vue') //TODO: add role based validation
-  }
+  },
+  {
+    path: '/fulfillment/deliveries',
+    name: 'internal_deliveries',
+    component: () => import('../views/fulfillment/Deliveries.vue') //TODO: add role based validation
+  },
 ]
 
 const router = new VueRouter({

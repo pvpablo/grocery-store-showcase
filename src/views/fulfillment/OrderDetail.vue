@@ -125,6 +125,7 @@ export default {
             notes: "Pickup in the parking lot at bay 3"
           }
         },
+        stateDelivery: 'PENDING',
         cart: order.cart
       }
       firestore.collection("deliveries").doc(this.$route.params.orderId).set(delivery).then( () => {
