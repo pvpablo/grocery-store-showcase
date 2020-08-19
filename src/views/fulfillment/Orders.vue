@@ -2,7 +2,7 @@
   <v-container class="mt-9 mb-16">
     <v-row>
       <v-col cols="12">
-        <span class="ml-3 text-h6">All active orders</span>
+        <span class="text-h6">All active orders</span>
       </v-col>
       <v-col>
         <v-data-table
