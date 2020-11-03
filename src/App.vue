@@ -114,6 +114,7 @@ export default {
         .auth()
         .signInWithPopup(provider)
         .then((result) => {
+          console.log(result)
           this.isAuthUser = true;
           this.displayName = result.user.displayName;
         })
