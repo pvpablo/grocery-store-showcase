@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "grocery-store-showcase",
-    "dev": "grocery-store-dev-7e803"
+    "default": "grocery-storefront-6a7c2"
   }
 }
