@@ -29,7 +29,6 @@ export const firestore = firebaseApp.firestore()
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    window.dataLayer.push({'userId': user.uid})
     firebase.auth().currentUser.getIdTokenResult().then((idTokenResult) => {
       if (idTokenResult.claims) {
         store.commit('updateClaims', idTokenResult.claims)
